@@ -52,6 +52,8 @@ if (dodajKategoriju) {
         formDodajTelefon.style.display = 'none';
         formDodajRadnika.style.display = 'none';
         formSpisakRadnika.style.display = 'none';
+        formIzmeniRadnika.style.display = 'none';
+        formIzmeniRadnika.style.display = 'none';
 
         // display the form
         formDodajKategoriju.style.display = 'flex';
