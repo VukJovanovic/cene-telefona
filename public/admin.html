@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Admin panel</title>
+  <link href="css/main.css" rel="stylesheet"></head>
+  <body>
+    <div class="adminContainer">
+      <div class="adminContainer__leftSide">
+        <div class="adminContainer__leftSide-menu">
+          <div class="admin__functions">
+            <h2>Kategorije</h2>
+            <a href="admin.html">Dodaj kategoriju</a>
+            <a href="#">Obrisi kategoriju</a>
+          </div>
+          <div class="admin__functions">
+            <h2>Telefon</h2>
+            <a href="#">Dodaj telefon</a>
+            <a href="#l">Izmeni telefon</a>
+            <a href="#">Obrisi telefon</a>
+          </div>
+          <div class="admin__functions">
+            <h2>Radnik</h2>
+            <a href="#">Dodaj radnika</a>
+            <a href="#">Spisak radnika</a>
+          </div>
+          <div class="admin__functions">
+            <a href="index.html">Pregled sajta</a>
+            <a href="#">Odjavi se</a>
+          </div>
+        </div>
+      </div>
+      <div class="adminContainer__rightSide">
+          <!-- <div class="loginMessages">
+              <div class="loginStyleMain loginSuccess">
+                <p>Uspesno ste se prijavili!</p>
+              </div>
+               <div class="loginStyleMain loginFail" >
+                <p>Niste se uspesno prijavili!</p>
+              </div> -->
+            <!-- </div>  -->
+        <div class="form" id="dodajKategoriju">
+          <h2 class="form__heading">Dodaj Kategoriju</h2>
+          <div class="form__group">
+            <label for="">Naziv:</label>
+            <input type="text" />
+          </div>
+          <a class="form__button" href="#">Dodaj</a>
+          <div class="form__inputContainer">
+            <div class="form__group">
+              <label for="">Naziv:</label>
+              <input type="text" />
+            </div>
+          </div>
+          <a class="form__button" href="#">Dodaj</a>
+        </div>
+      </div>
+      <div class="loginMessages moveToCenter">
+          <div class="loginStyleMain loginSuccess">
+            <p>Uspesno ste se prijavili!</p>
+          </div>
+          <div class="loginStyleMain loginFail" >
+            <p>Niste se uspesno prijavili!</p>
+          </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="./js/animations.js"></script>
+  <script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/animations.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/animations.js"></script></body>
+  </body>
+</html>

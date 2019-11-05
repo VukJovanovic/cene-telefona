@@ -1,0 +1,88 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width initial-scale=1, maximum-scale=1,user-scalable=0')
+        meta(http-equiv='X-UA-Compatible' content='ie=edge')
+        title= title
+        link(htef='https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap' rel='stylesheet')
+        link(href='/css/main.css' rel='stylesheet')
+    body    
+        .adminContainer
+            .loginMessages.moveToCenter
+            .adminContainer__leftSide
+                .adminContainer__leftSide-menu
+                    .admin__functions
+                        h2 Kategorije
+                        a.dodajKategoriju(href='#') Dodaj Kategoriju
+                        a.obrisiKategoriju(href='#') Obriši Kategoriju
+                    .admin__functions
+                        h2 Telefon
+                        a.dodajTelefon(href='#') Dodaj Telefon
+                        a(href='#') Obriši Telefon
+                        a(href='#') Izmeni Telefon
+                    - if(user)
+                        - if(user.role === 'admin')
+                            .admin__functions
+                                h2 Radnik
+                                a.dodajRadnika(href='#') Dodaj Radnika
+                                a.izmeniRadnika(href='#') Izmeni Radnika
+                                a.spisakRadnika(href='#') Spisak Radnika
+                    .admin__functions
+                        a(href='/') Pregled sajta
+                        a.logout(href='#') Odjavi se
+            .adminContainer__rightSide
+                .form(id='formDodajKategoriju')
+                    h2.form__heading Dodaj Kategoriju
+                    .form__group
+                        label(for='') Naziv:
+                        input(type='text' id='add__categoryName')
+                    a.form__button(href='#' id='btn__createCategory') Dodaj
+                .form(id='formObrisiKategoriju')
+                .form(id='formDodajTelefon')
+                    h2.form__heading Dodaj Telefon
+                    .form__group
+                        label(for='') Naziv:
+                        input(type='text' id='add__phoneName' placeholder='Samsung S10+')
+                    .form__group
+                        label(for='') Model:
+                        input(type='text' id='add__phoneModel' placeholder='S10+')
+                    .form__group
+                        label(for='') Godina:
+                        input(type='text' id='add__phoneYear' placeholder='2019')
+                    .form__group
+                        label(for='') Kategorija:
+                        input(type='text' id='add__phoneCategory' placeholder='samsung')
+                    .form__group
+                        label(for='') Cena Polovan:
+                        input(type='text' id='add__phonePricePol' placeholder='450-500')
+                    .form__group
+                        label(for='') Cena Nov:
+                        input(type='text' id='add__phonePriceNov' placeholder='600-650')
+                    a.form__button(href='#' id='btn__createPhone') Dodaj
+                .form(id='formDodajRadnika')
+                    h2.form__heading Dodaj Radnika
+                    .form__group
+                        label(for='') Ime:
+                        input(type='text' id='add__userName')
+                    .form__group
+                        label(for='') Email:
+                        input(type='text' id='add__userEmail')
+                    .form__group
+                        label(for='') Sifra:
+                        input(type='text' id='add__userPassword')
+                    .form__group
+                        label(for='') Uloga:
+                        input(type='text' id='add__userRole')
+                    a.form__button(href='#' id='btn__createUser') Dodaj
+                .form(id='formSpisakRadnika')
+                .form(id='formIzmeniRadnika')
+                    h2.form__heading Izmeni Radnika
+                    .form__group
+                        label(for='') ID:
+                        input(type='text' id='update__userID')
+                    a.form__button(href='#' id='btn__findUser') Pronadji
+                    .form__inputContainer              
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+        script(src='/js/bundle.js')
+        

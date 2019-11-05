@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width initial-scale=1, maximum-scale=1,user-scalable=0')
+        meta(http-equiv='X-UA-Compatible' content='ie=edge')
+        title Cene Telefona | Trenutne cene telefona u Srbiji
+        link(htef='https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap' rel='stylesheet')
+        link(href='/css/main.css' rel='stylesheet')
+    body
+        // Homepage
+        .container
+            .leftSide
+            .content__container
+                - if(user)
+                    .adminHeader
+                        .adminLogoutStyle
+                            a.adminLabelStyle(href='/admin/panel') Admin Panel
+                        .alignRight.adminLogoutStyle
+                            a.logoutLabelStyle.logout(href='#') Logout
+                form.content__searchForm(action='#')
+                    input.content__searchForm-searchBar(type='text' placeholder='Unesite željeni telefon...')
+                    button.content__searchForm-searchBtn
+                        img.searchIcon(src='/images/search-icon.svg' alt='Pretrazi cene telefona u Srbiji')
+                .mainMenu   
+                    a.menuBtn.openMenu(href='#' id='Meni') Meni
+                    a.mobileMenu.openMenu(href='')
+                        span
+                        span
+                        span
+                .content__container-title
+                    h1 Cene telefona u Srbiji <span class='break'></span> na jednom mestu.
+                .content__container-icon
+                    img(src='images/phone.svg' alt='Cena telefona u Srbiji')
+                .content__container-category--title
+                    h2 Kategorije
+                .content__container-category
+                    .content__container-category-container
+                        each category in categories
+                            a.content__container-category--card(href=`/kategorija/${category.slug}`)= category.name
+            .rightSide       
+        // Main menu
+        include _mainMenu
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+        script(src='/js/bundle.js')
+        script(src='/js/animations.js')
+                            

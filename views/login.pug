@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width initial-scale=1, maximum-scale=1,user-scalable=0')
+        meta(http-equiv='X-UA-Compatible' content='ie=edge')
+        title= title
+        link(htef='https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap' rel='stylesheet')
+        link(href='/css/main.css' rel='stylesheet')
+    body
+        .loginContainer
+            .loginMain
+                .loginMain__userName
+                    label(for='') Email:
+                    input.inputStyle.inputEmail(type='text', required)
+                .loginMain__password
+                    label(for='') Šifra:
+                    input.inputStyle.inputPassword(type='password', required)
+                    p.errorMessage
+                button.prijaviSe Prijavi se
+            .loginMessages
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+        script(src='/js/bundle.js')

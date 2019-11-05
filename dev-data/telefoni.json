@@ -1,0 +1,34 @@
+[
+  {
+    "name": "IPhone XS Max",
+    "model": "XS Max",
+    "year": "2018",
+    "category": "iphone",
+    "pricePol": "650e",
+    "priceNov": "900e"
+  },
+  {
+    "name": "IPhone XS",
+    "model": "XS",
+    "year": "2018",
+    "category": "iphone",
+    "pricePol": "600e",
+    "priceNov": "850e"
+  },
+  {
+    "name": "Samsung S10",
+    "model": "S10",
+    "year": "2018",
+    "category": "samsung",
+    "pricePol": "600e",
+    "priceNov": "850e"
+  },
+  {
+    "name": "Huawei P30",
+    "model": "P30",
+    "year": "2018",
+    "category": "huawei",
+    "pricePol": "600e",
+    "priceNov": "850e"
+  }
+]

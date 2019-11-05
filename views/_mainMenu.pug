@@ -1,0 +1,49 @@
+.mainMenu__container(id='mainMenuContainer')
+            .mainMenu__container-content
+                .mainMenu__container-content--left
+                    .homePage
+                        a(href='/') Početna  
+                    .aboutUs.borderBottom
+                        h2.aboutUsHeading O nama
+                        p.aboutUsText Tekst o nama
+                    .contact.borderBottom
+                        h2.contactUsHeading Kontakt
+                        p.contactUsText email: contact@cenetelefona.rs
+                    .socialMedia    
+                        h2.socialHeading Socijalne mreže
+                        .socialMedia__icons
+                            a.socialMedia__icons--icon(href='#')
+                                img(src='/images/facebook.svg' alt='Cene telefona facebook')
+                            a.socialMedia__icons--icon(href='#')
+                                img(src='/images/instagram.svg' alt='Cene telefona instagram')
+                            a.socialMedia__icons--icon(href='#')
+                                img(src='/images/twitter.svg' alt='Cene telefona twitter')
+                // Mobile main menu navigation
+                .mobileDropdownNavigation
+                    .homePage
+                        a(href='') Početna
+                    .mobileDropdownNavigation__tab 
+                        input(type='radio' name='rd' id='rd1')
+                        label(for='rd1') O nama
+                        .mobileDropdownNavigation__tab-content
+                            p O nama tekst
+                    .mobileDropdownNavigation__tab 
+                        input(type='radio' name='rd' id='rd2')
+                        label(for='rd2') Kontakt
+                        .mobileDropdownNavigation__tab-content
+                            p.textAlignCenter email: contact@cenetelefona.rs
+                    .mobileDropdownNavigation__tab 
+                        input(type='radio' name='rd' id='rd3')
+                        label(for='rd3') Socijalne mreže
+                        .mobileDropdownNavigation__tab-content
+                            a.socialMedia__icons--icon(href='#')
+                                img(src='/images/facebook.svg' alt='Cene telefona facebook')
+                            a.socialMedia__icons--icon(href='#')
+                                img(src='/images/instagram.svg' alt='Cene telefona instagram')
+                            a.socialMedia__icons--icon(href='#')
+                                img(src='/images/twitter.svg' alt='Cene telefona twitter')
+                .mainMenu__container-content--right
+                    a.goBack(href='#' id='goBack') Nazad
+                    a.goHome(href='/' id='goHome') Početna
+            .mainMenu__container-footer
+                p &copy; 2019. Sva prava zadržana.

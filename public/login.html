@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login panel</title>
+  <link href="css/main.css" rel="stylesheet"></head>
+  <body>
+    <div class="loginContainer">
+        <div class="loginMain">
+            <div class="loginMain__userName">
+                <label for="">Korisnicko ime:</label>
+                <input class="inputStyle" type="text">
+            </div>
+            <div class="loginMain__password">
+                <label for="">Sifra:</label>
+                <input class="inputStyle" type="text">
+            </div>
+            <button>Prijavi se</button>
+        </div>
+        <div class="loginMessages">
+          <div class="loginStyleMain loginSuccess">
+            <p>Uspesno ste se prijavili!</p>
+          </div>
+          <div class="loginStyleMain loginFail" >
+            <p>Niste se uspesno prijavili!</p>
+          </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="./js/animations.js"></script>
+  <script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/animations.js"></script></body>
+</html>
