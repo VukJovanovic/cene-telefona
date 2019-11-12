@@ -1322,7 +1322,7 @@ body {
 }
 .ErrorPageContainer .errorContent {
   width: 100%;
-  background-image: url("/error.da55bd8e.svg");
+  background-image: url("../images/error.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 300px;
