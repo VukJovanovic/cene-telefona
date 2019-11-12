@@ -85,6 +85,7 @@
         }
         input {
           height: 3rem;
+          width: 220px;
           border-radius: 5px;
           outline: none;
           border: none;
@@ -117,7 +118,8 @@
           background-color: $primary-color;
         }
       }
-      .form__inputContainer {
+      .form__inputContainer,
+      .phoneUpdate__inputContainer {
         margin-top: 3rem;
         border-top: 1px solid $primary-color;
         padding-top: 2rem;
