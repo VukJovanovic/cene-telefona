@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
-import { displayCategories, displayUsers, userInfo } from './itemFunctions';
+import { displayCategories, displayUsers, userInfo, phoneInfo } from './itemFunctions';
 import { clearFields, deleteItemFromUI, clearItems } from './itemFunctions';
 
 // Login in user
@@ -118,6 +118,46 @@ export const api__createPhone = async (naziv, model, godina, kategorija, cenaPol
     }
 }
 
+// find phone
+export const api__findPhone = async (slug, parentEl) => {
+    try {
+        const res = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:3000/api/v1/telefoni/${slug}`,
+        });
+        console.log(res);
+        if (res.data.status === 'success') {
+            phoneInfo(res.data.data.telefon[0], parentEl)
+        }
+    } catch (err) {
+        showAlert('loginFail', err.response.data.message);
+    }
+}
+
+// update phone
+export const api__updatePhone = async (slug, name, model, year, category, pricePol, priceNov, fields) => {
+    try {
+        const res = await axios({
+            method: 'PATCH',
+            url: `http://127.0.0.1:3000/api/v1/telefoni`,
+            data: {
+                name,
+                model,
+                year,
+                category,
+                pricePol,
+                priceNov
+            }
+        });
+        if (res.data.status === 'success') {
+            showAlert('loginSuccess', 'Telefon uspesno izmenjen!');
+            clearFields(fields);
+        }
+    } catch (err) {
+        showAlert('loginFail', err.response.data.message);
+    }
+};
+
 // create new user
 export const api__createUser = async (ime, email, sifra, uloga, fields) => {
     try {
@@ -164,6 +204,8 @@ export const api__findUser = async (userId, infoParent) => {
         });
         if (res.data.status === 'success') {
             userInfo(res.data.data.radnik, infoParent)
+        } else {
+            console.log('prazan');
         }
     } catch (err) {
         showAlert('loginFail', err.response.data.message);

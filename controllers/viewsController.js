@@ -23,9 +23,12 @@ exports.getPhonesByCategory = async (req, res, next) => {
             title: phones[0].category,
             phones
         });
+        if (!phones) {
+            return next(new AppError('Trenutno nemamo telefone u ovoj kategoriji', 404));
+        }
     }
     catch (err) {
-        next(err)
+        next(new AppError('Trenutno nemamo telefone u ovoj kategoriji', 404));
     }
 }
 

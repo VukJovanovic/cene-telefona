@@ -6,7 +6,7 @@ const PhoneModel = require('../models/phoneModel');
 // Get phone based on its id
 exports.getPhone = async (req, res, next) => {
     try {
-        const telefon = await PhoneModel.findById(req.params.id);
+        const telefon = await PhoneModel.find({ slug: req.params.slug });
 
         if (!telefon) {
             return next(new AppError('Ne postoji telefon sa ovim ID.', 404));
@@ -76,7 +76,7 @@ exports.createPhone = async (req, res, next) => {
 // Update phone
 exports.updatePhone = async (req, res, next) => {
     try {
-        const telefon = await PhoneModel.findByIdAndUpdate(req.params.id, req.body, {
+        const telefon = await PhoneModel.findOneAndUpdate({ slug: req.params.slug }, req.body, {
             new: true,
             runValidators: true
         });

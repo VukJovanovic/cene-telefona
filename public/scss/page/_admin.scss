@@ -1,0 +1,128 @@
+.adminContainer {
+  &__leftSide {
+    height: 100vh;
+    background-color: $secondary-grey;
+
+    &-menu {
+      padding-top: 3rem;
+      .admin__functions {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 3rem;
+
+        h2 {
+          position: relative;
+          font-size: 2rem;
+          font-weight: 400;
+          color: $secondary-color;
+          margin-bottom: 2rem;
+          padding-bottom: 1rem;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background-color: $primary-color;
+          }
+        }
+
+        a {
+          text-decoration: none;
+          font-size: 1.5rem;
+          font-weight: 300;
+          color: $primary-color;
+          padding: 0.6rem;
+          transition: transform 0.3s;
+
+          &:nth-child(1) {
+            margin-top: 5rem;
+          }
+        }
+        a:hover {
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+  &__rightSide {
+    padding: 6rem;
+
+    .form {
+      display: none;
+      flex-direction: column;
+      &__heading {
+        font-size: 2rem;
+        font-weight: 400;
+        color: $secondary-color;
+        margin-bottom: 2.5rem;
+        position: relative;
+        padding-bottom: 1rem;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 4rem;
+          background-color: $primary-color;
+        }
+      }
+      &__group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        label {
+          font-size: 1.5rem;
+          margin-right: 2rem;
+          font-weight: 300;
+          color: $primary-color;
+        }
+        input {
+          height: 3rem;
+          border-radius: 5px;
+          outline: none;
+          border: none;
+          background-color: $secondary-grey;
+          padding-left: 1rem;
+          margin-right: 2rem;
+          &:focus {
+            border-bottom: 1px solid $secondary-color;
+          }
+        }
+      }
+      .form__button {
+        display: block;
+        width: 10rem;
+        border: none;
+        background-color: $secondary-color;
+        color: white;
+        border-radius: 5px;
+        outline: none;
+        height: 3rem;
+        transition: 0.3s;
+        font-size: 1.3rem;
+        padding-top: 0.6rem;
+        text-align: center;
+        text-decoration: none;
+        &:hover {
+          background-color: $primary-color;
+        }
+        &:focus {
+          background-color: $primary-color;
+        }
+      }
+      .form__inputContainer {
+        margin-top: 3rem;
+        border-top: 1px solid $primary-color;
+        padding-top: 2rem;
+        
+      }
+    }
+  }
+}

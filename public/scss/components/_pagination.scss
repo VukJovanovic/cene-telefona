@@ -1,0 +1,30 @@
+.content__container-category--pagination {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+
+  .pageButton {
+    display: flex;
+    width: 12rem;
+    height: 4rem;
+    border: 1px solid $primary-color;
+    border-radius: 20px;
+    margin-right: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin-left: 1rem;
+      width: 2rem;
+      transition: margin-left 0.3s;
+    }
+
+    &:hover img {
+      margin-left: 1.5rem;
+    }
+  }
+
+  .pageNumber {
+    margin-right: 1rem;
+  }
+}

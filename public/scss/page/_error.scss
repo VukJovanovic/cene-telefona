@@ -1,0 +1,36 @@
+.ErrorPageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  .errorContent {
+    width: 100%;
+    background-image: url('../images/error.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px;
+
+    @media only screen and (max-width: 400px) {
+      background-size: 250px;
+    }
+  }
+
+  .goBackFromError {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 75%;
+
+    a {
+      text-decoration: none;
+      font-size: 2rem;
+      font-weight: 400;
+      color: $primary-color;
+      padding: 0.6rem;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: $secondary-color;
+    }
+  }
+}

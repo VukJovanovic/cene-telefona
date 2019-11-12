@@ -20,7 +20,7 @@ html
                         h2 Telefon
                         a.dodajTelefon(href='#') Dodaj Telefon
                         a(href='#') Obriši Telefon
-                        a(href='#') Izmeni Telefon
+                        a.izmeniTelefon(href='#') Izmeni Telefon
                     - if(user)
                         - if(user.role === 'admin')
                             .admin__functions
@@ -60,6 +60,13 @@ html
                         label(for='') Cena Nov:
                         input(type='text' id='add__phonePriceNov' placeholder='600-650')
                     a.form__button(href='#' id='btn__createPhone') Dodaj
+                .form(id='formIzmeniTelefon')
+                    h2.form__heading Izmeni Telefon
+                    .form__group
+                        label(for='') Slug:
+                        input(type='text' id='update_phoneSlug' placeholder='samsung-s10')
+                    a.form__button(href='#' id='btn__findPhoneUpdate') Pronadji
+                    .phoneUpdate__inputContainer  
                 .form(id='formDodajRadnika')
                     h2.form__heading Dodaj Radnika
                     .form__group

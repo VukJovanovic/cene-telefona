@@ -1,0 +1,103 @@
+.content__searchForm {
+  display: flex;
+  // flex: 0 0 60%;
+
+  @media only screen and (max-width: 1024px) {
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    justify-content: center;
+    margin-left: 1.5rem;
+  }
+  @media only screen and (max-width: 350px) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  &-searchBar {
+    font-size: 1.5rem;
+    padding-left: 2.5rem;
+    height: 40px;
+    width: 650px;
+    border-radius: 100px;
+    border: none;
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+    -webkit-appearance: none;
+    -webkit-box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+    transition: all 0.4s;
+
+    &:focus {
+      outline: none;
+      transform: translateY(5px);
+      box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+    }
+    @media only screen and (max-width: 1270px) {
+      &:focus {
+        outline: none;
+        transform: none;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+      }
+      & {
+        width: 520px;
+      }
+    }
+    @media only screen and (max-width: 1024px) {
+      width: 100%;
+    }
+    @media only screen and (max-width: 600px) {
+      font-size: 1.8rem;
+    }
+    @media only screen and (max-width: 350px) {
+      height: 30px;
+    }
+  }
+  &-searchBar:focus + .content__searchForm-searchBtn {
+    transform: translate(-5rem, 5px);
+  }
+
+  &-searchBar::placeholder {
+    color: $primary-color;
+    overflow: hidden;
+  }
+
+  &-searchBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.4s;
+
+    transform: translate(-5rem, 0px);
+    &:focus {
+      outline: none;
+      border-bottom: solid 1px $primary-color;
+    }
+
+    @media only screen and (max-width: 600px) {
+      & {
+        transform: translate(-6rem, 0px);
+        img {
+          width: 30px;
+          height: auto;
+        }
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      & {
+        transform: translate(-6rem, 0px);
+        img {
+          width: 25px;
+          height: auto;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    &-searchBar:focus + .content__searchForm-searchBtn {
+      transform: translate(-5rem);
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    &-searchBar:focus + .content__searchForm-searchBtn {
+      transform: translate(-6rem);
+    }
+  }
+}

@@ -1,0 +1,96 @@
+// Main menu styles
+.mainMenu__container {
+  &-content {
+    &--left {
+      // button for mobile and tablet screens that leads to homepage
+      .homePage a {
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: $secondary-color;
+        text-decoration: none;
+      }
+      * > h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: $secondary-color;
+      }
+
+      * > p {
+        font-size: 1.8rem;
+        padding-top: 1.5rem;
+        font-weight: 300;
+        color: $secondary-color;
+        line-height: 2.5rem;
+        text-align: justify;
+      }
+      @media only screen and (max-width: 1024px) {
+        * > h2 {
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+    &--right {
+      text-align: right;
+      .goBack,
+      .goHome {
+        font-size: 2rem;
+        font-weight: 300;
+        font-weight: 400;
+        color: $secondary-color;
+        text-decoration: none;
+      }
+    }
+  }
+  &-footer {
+    text-align: center;
+    font-size: 1.2rem;
+    color: $secondary-color;
+  }
+}
+
+.content__container-title h1 {
+  text-align: left;
+  font-size: 4rem;
+  font-weight: 300;
+  color: $secondary-color;
+
+  @media only screen and (max-width: 1024px) {
+    .break {
+      display: block;
+    }
+    font-size: 3.5rem;
+  }
+  @media only screen and (max-width: 700px) {
+    font-size: 3rem;
+  }
+}
+
+.content__container-category--title h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: $secondary-color;
+}
+
+// text styles for categories
+.content__container-category {
+  &--card {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+// text style for pagination buttons
+.content__container-category--pagination {
+  .pageButton {
+    text-align: center;
+    text-decoration: none;
+    color: $primary-color;
+    font-size: 1.2rem;
+  }
+  .pageNumber {
+    font-size: 1.2rem;
+  }
+}

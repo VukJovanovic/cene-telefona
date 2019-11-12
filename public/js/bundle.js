@@ -8345,7 +8345,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearFields = exports.clearItems = exports.userInfo = exports.deleteItemFromUI = exports.displayUsers = exports.displayCategories = void 0;
+exports.clearFields = exports.clearItems = exports.userInfo = exports.deleteItemFromUI = exports.displayUsers = exports.phoneInfo = exports.displayCategories = void 0;
 
 var displayCategories = function displayCategories(data, parentEl, heading) {
   clearItems(parentEl);
@@ -8357,6 +8357,14 @@ var displayCategories = function displayCategories(data, parentEl, heading) {
 };
 
 exports.displayCategories = displayCategories;
+
+var phoneInfo = function phoneInfo(data, parentEl) {
+  clearItems(parentEl);
+  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" id=\"update__phoneName\" value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" id=\"update__phoneModel\" value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" id=\"update__phoneYear\" value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" id=\"update__phoneCategory\" value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" id=\"update__phonePriceNov\" value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" id=\"update__phonePricePol\" value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button\" id=\"btn__updatePhone\">Sacuvaj</a>\n                ");
+  parentEl.insertAdjacentHTML('beforeend', markup);
+};
+
+exports.phoneInfo = phoneInfo;
 
 var displayUsers = function displayUsers(data, parentEl, heading) {
   clearItems(parentEl);
@@ -8403,7 +8411,7 @@ exports.clearFields = clearFields;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.api__updateUser = exports.api__findUser = exports.api__deleteUser = exports.api__createUser = exports.api__createPhone = exports.api__deleteCategory = exports.api__createCategory = exports.listItems = exports.logout = exports.login = void 0;
+exports.api__updateUser = exports.api__findUser = exports.api__deleteUser = exports.api__createUser = exports.api__updatePhone = exports.api__findPhone = exports.api__createPhone = exports.api__deleteCategory = exports.api__createCategory = exports.listItems = exports.logout = exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8732,17 +8740,17 @@ function () {
   return function api__createPhone(_x10, _x11, _x12, _x13, _x14, _x15, _x16) {
     return _ref6.apply(this, arguments);
   };
-}(); // create new user
+}(); // find phone
 
 
 exports.api__createPhone = api__createPhone;
 
-var api__createUser =
+var api__findPhone =
 /*#__PURE__*/
 function () {
   var _ref7 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee7(ime, email, sifra, uloga, fields) {
+  regeneratorRuntime.mark(function _callee7(slug, parentEl) {
     var res;
     return regeneratorRuntime.wrap(function _callee7$(_context7) {
       while (1) {
@@ -8751,53 +8759,48 @@ function () {
             _context7.prev = 0;
             _context7.next = 3;
             return (0, _axios.default)({
-              method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/radnici',
-              data: {
-                name: ime,
-                email: email,
-                password: sifra,
-                role: uloga
-              }
+              method: 'GET',
+              url: "http://127.0.0.1:3000/api/v1/telefoni/".concat(slug)
             });
 
           case 3:
             res = _context7.sent;
+            console.log(res);
 
             if (res.data.status === 'success') {
-              (0, _alerts.showAlert)('loginSuccess', 'Radnik uspesno kreiran!');
-              (0, _itemFunctions.clearFields)(fields);
+              (0, _itemFunctions.phoneInfo)(res.data.data.telefon[0], parentEl);
             }
 
-            _context7.next = 10;
+            _context7.next = 11;
             break;
 
-          case 7:
-            _context7.prev = 7;
+          case 8:
+            _context7.prev = 8;
             _context7.t0 = _context7["catch"](0);
             (0, _alerts.showAlert)('loginFail', _context7.t0.response.data.message);
 
-          case 10:
+          case 11:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7, null, [[0, 7]]);
+    }, _callee7, null, [[0, 8]]);
   }));
 
-  return function api__createUser(_x17, _x18, _x19, _x20, _x21) {
+  return function api__findPhone(_x17, _x18) {
     return _ref7.apply(this, arguments);
   };
-}();
+}(); // update phone
 
-exports.api__createUser = api__createUser;
 
-var api__deleteUser =
+exports.api__findPhone = api__findPhone;
+
+var api__updatePhone =
 /*#__PURE__*/
 function () {
   var _ref8 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee8(userID) {
+  regeneratorRuntime.mark(function _callee8(slug, name, model, year, category, pricePol, priceNov, fields) {
     var res;
     return regeneratorRuntime.wrap(function _callee8$(_context8) {
       while (1) {
@@ -8806,16 +8809,24 @@ function () {
             _context8.prev = 0;
             _context8.next = 3;
             return (0, _axios.default)({
-              method: 'DELETE',
-              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userID)
+              method: 'PATCH',
+              url: "http://127.0.0.1:3000/api/v1/telefoni",
+              data: {
+                name: name,
+                model: model,
+                year: year,
+                category: category,
+                pricePol: pricePol,
+                priceNov: priceNov
+              }
             });
 
           case 3:
             res = _context8.sent;
 
             if (res.data.status === 'success') {
-              (0, _alerts.showAlert)('loginSuccess', 'Radnik je uspesno izbrisan!');
-              (0, _itemFunctions.deleteItemFromUI)(userID);
+              (0, _alerts.showAlert)('loginSuccess', 'Telefon uspesno izmenjen!');
+              (0, _itemFunctions.clearFields)(fields);
             }
 
             _context8.next = 10;
@@ -8834,20 +8845,20 @@ function () {
     }, _callee8, null, [[0, 7]]);
   }));
 
-  return function api__deleteUser(_x22) {
+  return function api__updatePhone(_x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26) {
     return _ref8.apply(this, arguments);
   };
-}(); // find user and display his data
+}(); // create new user
 
 
-exports.api__deleteUser = api__deleteUser;
+exports.api__updatePhone = api__updatePhone;
 
-var api__findUser =
+var api__createUser =
 /*#__PURE__*/
 function () {
   var _ref9 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee9(userId, infoParent) {
+  regeneratorRuntime.mark(function _callee9(ime, email, sifra, uloga, fields) {
     var res;
     return regeneratorRuntime.wrap(function _callee9$(_context9) {
       while (1) {
@@ -8856,15 +8867,22 @@ function () {
             _context9.prev = 0;
             _context9.next = 3;
             return (0, _axios.default)({
-              method: 'GET',
-              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userId)
+              method: 'POST',
+              url: 'http://127.0.0.1:3000/api/v1/radnici',
+              data: {
+                name: ime,
+                email: email,
+                password: sifra,
+                role: uloga
+              }
             });
 
           case 3:
             res = _context9.sent;
 
             if (res.data.status === 'success') {
-              (0, _itemFunctions.userInfo)(res.data.data.radnik, infoParent);
+              (0, _alerts.showAlert)('loginSuccess', 'Radnik uspesno kreiran!');
+              (0, _itemFunctions.clearFields)(fields);
             }
 
             _context9.next = 10;
@@ -8883,20 +8901,19 @@ function () {
     }, _callee9, null, [[0, 7]]);
   }));
 
-  return function api__findUser(_x23, _x24) {
+  return function api__createUser(_x27, _x28, _x29, _x30, _x31) {
     return _ref9.apply(this, arguments);
   };
-}(); // update user
+}();
 
+exports.api__createUser = api__createUser;
 
-exports.api__findUser = api__findUser;
-
-var api__updateUser =
+var api__deleteUser =
 /*#__PURE__*/
 function () {
   var _ref10 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee10(userId, userName, userEmail, userRole, parentEl) {
+  regeneratorRuntime.mark(function _callee10(userID) {
     var res;
     return regeneratorRuntime.wrap(function _callee10$(_context10) {
       while (1) {
@@ -8905,21 +8922,16 @@ function () {
             _context10.prev = 0;
             _context10.next = 3;
             return (0, _axios.default)({
-              method: 'PATCH',
-              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userId),
-              data: {
-                name: userName,
-                email: userEmail,
-                role: userRole
-              }
+              method: 'DELETE',
+              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userID)
             });
 
           case 3:
             res = _context10.sent;
 
             if (res.data.status === 'success') {
-              (0, _alerts.showAlert)('loginSuccess', 'Radnik uspesno izmenjen!');
-              (0, _itemFunctions.clearItems)(parentEl);
+              (0, _alerts.showAlert)('loginSuccess', 'Radnik je uspesno izbrisan!');
+              (0, _itemFunctions.deleteItemFromUI)(userID);
             }
 
             _context10.next = 10;
@@ -8938,8 +8950,114 @@ function () {
     }, _callee10, null, [[0, 7]]);
   }));
 
-  return function api__updateUser(_x25, _x26, _x27, _x28, _x29) {
+  return function api__deleteUser(_x32) {
     return _ref10.apply(this, arguments);
+  };
+}(); // find user and display his data
+
+
+exports.api__deleteUser = api__deleteUser;
+
+var api__findUser =
+/*#__PURE__*/
+function () {
+  var _ref11 = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee11(userId, infoParent) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee11$(_context11) {
+      while (1) {
+        switch (_context11.prev = _context11.next) {
+          case 0:
+            _context11.prev = 0;
+            _context11.next = 3;
+            return (0, _axios.default)({
+              method: 'GET',
+              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userId)
+            });
+
+          case 3:
+            res = _context11.sent;
+
+            if (res.data.status === 'success') {
+              (0, _itemFunctions.userInfo)(res.data.data.radnik, infoParent);
+            } else {
+              console.log('prazan');
+            }
+
+            _context11.next = 10;
+            break;
+
+          case 7:
+            _context11.prev = 7;
+            _context11.t0 = _context11["catch"](0);
+            (0, _alerts.showAlert)('loginFail', _context11.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context11.stop();
+        }
+      }
+    }, _callee11, null, [[0, 7]]);
+  }));
+
+  return function api__findUser(_x33, _x34) {
+    return _ref11.apply(this, arguments);
+  };
+}(); // update user
+
+
+exports.api__findUser = api__findUser;
+
+var api__updateUser =
+/*#__PURE__*/
+function () {
+  var _ref12 = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee12(userId, userName, userEmail, userRole, parentEl) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee12$(_context12) {
+      while (1) {
+        switch (_context12.prev = _context12.next) {
+          case 0:
+            _context12.prev = 0;
+            _context12.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userId),
+              data: {
+                name: userName,
+                email: userEmail,
+                role: userRole
+              }
+            });
+
+          case 3:
+            res = _context12.sent;
+
+            if (res.data.status === 'success') {
+              (0, _alerts.showAlert)('loginSuccess', 'Radnik uspesno izmenjen!');
+              (0, _itemFunctions.clearItems)(parentEl);
+            }
+
+            _context12.next = 10;
+            break;
+
+          case 7:
+            _context12.prev = 7;
+            _context12.t0 = _context12["catch"](0);
+            (0, _alerts.showAlert)('loginFail', _context12.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context12.stop();
+        }
+      }
+    }, _callee12, null, [[0, 7]]);
+  }));
+
+  return function api__updateUser(_x35, _x36, _x37, _x38, _x39) {
+    return _ref12.apply(this, arguments);
   };
 }();
 
@@ -9240,12 +9358,14 @@ if (btn__logout) {
 var dodajKategoriju = document.querySelector('.dodajKategoriju');
 var obrisiKategoriju = document.querySelector('.obrisiKategoriju');
 var dodajTelefon = document.querySelector('.dodajTelefon');
+var izmeniTelefon = document.querySelector('.izmeniTelefon');
 var dodajRadnika = document.querySelector('.dodajRadnika');
 var spisakRadnika = document.querySelector('.spisakRadnika');
 var izmeniRadnika = document.querySelector('.izmeniRadnika');
 var formDodajKategoriju = document.getElementById('formDodajKategoriju');
 var formObrisiKategoriju = document.getElementById('formObrisiKategoriju');
 var formDodajTelefon = document.getElementById('formDodajTelefon');
+var formIzmeniTelefon = document.getElementById('formIzmeniTelefon');
 var formDodajRadnika = document.getElementById('formDodajRadnika');
 var formSpisakRadnika = document.getElementById('formSpisakRadnika');
 var formIzmeniRadnika = document.getElementById('formIzmeniRadnika'); // ////////////////////// Category functions
@@ -9259,7 +9379,8 @@ if (dodajKategoriju) {
     formDodajRadnika.style.display = 'none';
     formSpisakRadnika.style.display = 'none';
     formIzmeniRadnika.style.display = 'none';
-    formIzmeniRadnika.style.display = 'none'; // display the form
+    formIzmeniRadnika.style.display = 'none';
+    formIzmeniTelefon.style.display = 'none'; // display the form
 
     formDodajKategoriju.style.display = 'flex';
   });
@@ -9289,7 +9410,8 @@ if (obrisiKategoriju) {
     formDodajTelefon.style.display = 'none';
     formDodajRadnika.style.display = 'none';
     formSpisakRadnika.style.display = 'none';
-    formIzmeniRadnika.style.display = 'none'; // get all categories from api
+    formIzmeniRadnika.style.display = 'none';
+    formIzmeniTelefon.style.display = 'none'; // get all categories from api
 
     formObrisiKategoriju.style.display = 'flex';
     (0, _api_functions.listItems)('http://127.0.0.1:3000/api/v1/kategorije', 'GET', formObrisiKategoriju, 'Obrisi Kategoriju');
@@ -9317,7 +9439,8 @@ if (dodajTelefon) {
     formObrisiKategoriju.style.display = 'none';
     formDodajRadnika.style.display = 'none';
     formSpisakRadnika.style.display = 'none';
-    formIzmeniRadnika.style.display = 'none'; // display the form
+    formIzmeniRadnika.style.display = 'none';
+    formIzmeniTelefon.style.display = 'none'; // display the form
 
     formDodajTelefon.style.display = 'flex';
   });
@@ -9342,6 +9465,36 @@ if (btn__createPhone) {
       (0, _api_functions.api__createPhone)(phoneName.value, phoneModel.value, phoneYear.value, phoneCategory.value, phonePricePol.value, phonePriceNov.value, dodajTelefonInputFields);
     }
   });
+} // Editing phone
+
+
+if (izmeniTelefon) {
+  izmeniTelefon.addEventListener('click', function () {
+    // hide other forms
+    formDodajKategoriju.style.display = 'none';
+    formObrisiKategoriju.style.display = 'none';
+    formDodajRadnika.style.display = 'none';
+    formSpisakRadnika.style.display = 'none';
+    formIzmeniRadnika.style.display = 'none';
+    formDodajTelefon.style.display = 'none'; // display the form
+
+    formIzmeniTelefon.style.display = 'flex';
+  });
+}
+
+var btn__updatePhone = document.getElementById('btn__findPhoneUpdate');
+
+if (btn__updatePhone) {
+  btn__updatePhone.addEventListener('click', function () {
+    var updatePhoneSlug = document.getElementById('update_phoneSlug');
+    var formParent = document.querySelector('.phoneUpdate__inputContainer');
+
+    if (!updatePhoneSlug.value) {
+      (0, _alerts.showAlert)('loginFail', 'Popunite polje!');
+    } else {
+      (0, _api_functions.api__findPhone)(updatePhoneSlug.value, formParent);
+    }
+  });
 } // ///////////////////////////// User functions
 // showing form for creating new user
 
@@ -9353,6 +9506,7 @@ if (dodajRadnika) {
     formDodajTelefon.style.display = 'none';
     formSpisakRadnika.style.display = 'none';
     formIzmeniRadnika.style.display = 'none';
+    formIzmeniTelefon.style.display = 'none';
     formDodajRadnika.style.display = 'flex';
   });
 } // creating new user
@@ -9396,6 +9550,7 @@ if (spisakRadnika) {
     formDodajTelefon.style.display = 'none';
     formDodajRadnika.style.display = 'none';
     formIzmeniRadnika.style.display = 'none';
+    formIzmeniTelefon.style.display = 'none';
     formSpisakRadnika.style.display = 'flex';
     (0, _api_functions.listItems)('http://127.0.0.1:3000/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
   });
@@ -9409,6 +9564,7 @@ if (izmeniRadnika) {
     formDodajTelefon.style.display = 'none';
     formDodajRadnika.style.display = 'none';
     formSpisakRadnika.style.display = 'none';
+    formIzmeniTelefon.style.display = 'none';
     formIzmeniRadnika.style.display = 'flex';
   });
 }
@@ -9473,7 +9629,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57686" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50207" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

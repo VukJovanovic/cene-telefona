@@ -1,0 +1,34 @@
+.loginMessages {
+  position: absolute;
+  top: 0;
+  width: 30%;
+
+  .loginStyleMain {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: $secondary-color;
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.25);
+
+    p {
+      color: white;
+    }
+  }
+
+  .loginSuccess {
+    background-color: $secondary-color;
+  }
+
+  .loginFail {
+    background-color: $primary-color;
+  }
+}
+
+.moveToCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}

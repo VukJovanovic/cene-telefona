@@ -1,0 +1,53 @@
+.mainMenu {
+  .menuBtn {
+    position: relative;
+    display: block;
+    color: $secondary-color;
+    font-size: 2rem;
+    text-decoration: none;
+    padding-bottom: 0.5rem;
+    @media only screen and (max-width: 460px) {
+      display: none;
+    }
+  }
+  .menuBtn:focus {
+    outline: none;
+  }
+  .menuBtn:focus.menuBtn::after {
+    width: 100%;
+  }
+  .menuBtn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 2px;
+    background-color: $primary-color;
+    transition: width 0.5s;
+  }
+  .menuBtn:hover.menuBtn::after {
+    width: 100%;
+  }
+
+  .mobileMenu {
+    width: 30px;
+    height: 30px;
+    display: none;
+    transform: translateY(10px);
+
+    @media only screen and (max-width: 460px) {
+      display: block;
+    }
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      margin-bottom: 6px;
+      background-color: $secondary-color;
+    }
+    &:nth-child(3) {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.content__container-category {
+  position: relative;
+  margin-top: 5rem;
+
+  &-container {
+    @media only screen and (max-width: 1500px) {
+      & {
+        margin-top: 1rem;
+        justify-self: center;
+        justify-content: center;
+      }
+    }
+    @media only screen and (max-width: 1024px) {
+      margin-top: 1rem;
+    }
+    @media only screen and (max-width: 700px) {
+      margin-top: 1rem;
+    }
+    @media only screen and (max-width: 460px) {
+      margin-top: 2rem;
+      margin-bottom: 10rem;
+    }
+  }
+
+  &--card {
+    display: block;
+    width: 17rem;
+    height: 12rem;
+    background-color: $primary-color;
+    border-radius: 20px;
+    padding-top: 4.5rem;
+    box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    @media only screen and (max-width: 1024px) {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}

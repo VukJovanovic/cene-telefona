@@ -1,0 +1,27 @@
+.content__container-category--title {
+  display: flex;
+}
+
+.content__container-category--title h2 {
+  justify-self: flex-start;
+  align-self: flex-end;
+  position: relative;
+
+  padding-bottom: 0.7rem;
+  
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 55px;
+    height: 2px;
+    background-color: $primary-color;
+
+    @media only screen and (max-width: 600px) {
+      width: 30px;
+      height: 2px;
+    }
+  }
+}

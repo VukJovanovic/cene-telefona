@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import { showAlert } from './alerts';
-import { login, logout, listItems, api__deleteUser, api__createPhone, api__createCategory, api__deleteCategory, api__createUser, api__findUser, api__updateUser } from './api_functions';
+import { login, logout, listItems, api__deleteUser, api__createPhone, api__createCategory, api__deleteCategory, api__findPhone, api__createUser, api__findUser, api__updateUser } from './api_functions';
 
 // admin login
 const prijaviSe = document.querySelector('.prijaviSe')
@@ -31,12 +31,14 @@ if (btn__logout) {
 const dodajKategoriju = document.querySelector('.dodajKategoriju');
 const obrisiKategoriju = document.querySelector('.obrisiKategoriju');
 const dodajTelefon = document.querySelector('.dodajTelefon');
+const izmeniTelefon = document.querySelector('.izmeniTelefon');
 const dodajRadnika = document.querySelector('.dodajRadnika');
 const spisakRadnika = document.querySelector('.spisakRadnika');
 const izmeniRadnika = document.querySelector('.izmeniRadnika');
 const formDodajKategoriju = document.getElementById('formDodajKategoriju');
 const formObrisiKategoriju = document.getElementById('formObrisiKategoriju');
 const formDodajTelefon = document.getElementById('formDodajTelefon');
+const formIzmeniTelefon = document.getElementById('formIzmeniTelefon');
 const formDodajRadnika = document.getElementById('formDodajRadnika');
 const formSpisakRadnika = document.getElementById('formSpisakRadnika');
 const formIzmeniRadnika = document.getElementById('formIzmeniRadnika');
@@ -54,6 +56,7 @@ if (dodajKategoriju) {
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
 
         // display the form
         formDodajKategoriju.style.display = 'flex';
@@ -86,6 +89,7 @@ if (obrisiKategoriju) {
         formDodajRadnika.style.display = 'none';
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
 
         // get all categories from api
         formObrisiKategoriju.style.display = 'flex';
@@ -120,6 +124,7 @@ if (dodajTelefon) {
         formDodajRadnika.style.display = 'none';
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
 
         // display the form
         formDodajTelefon.style.display = 'flex';
@@ -149,6 +154,36 @@ if (btn__createPhone) {
     });
 }
 
+// Editing phone
+
+if (izmeniTelefon) {
+    izmeniTelefon.addEventListener('click', function () {
+        // hide other forms
+        formDodajKategoriju.style.display = 'none';
+        formObrisiKategoriju.style.display = 'none';
+        formDodajRadnika.style.display = 'none';
+        formSpisakRadnika.style.display = 'none';
+        formIzmeniRadnika.style.display = 'none';
+        formDodajTelefon.style.display = 'none';
+
+        // display the form
+        formIzmeniTelefon.style.display = 'flex';
+    });
+}
+const btn__updatePhone = document.getElementById('btn__findPhoneUpdate');
+if (btn__updatePhone) {
+    btn__updatePhone.addEventListener('click', function () {
+        const updatePhoneSlug = document.getElementById('update_phoneSlug');
+        const formParent = document.querySelector('.phoneUpdate__inputContainer');
+
+        if (!updatePhoneSlug.value) {
+            showAlert('loginFail', 'Popunite polje!');
+        } else {
+            api__findPhone(updatePhoneSlug.value, formParent);
+        }
+    });
+}
+
 
 // ///////////////////////////// User functions
 
@@ -160,10 +195,12 @@ if (dodajRadnika) {
         formDodajTelefon.style.display = 'none';
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
 
         formDodajRadnika.style.display = 'flex'
     });
 }
+
 
 // creating new user
 const btn__createUser = document.getElementById('btn__createUser');
@@ -208,6 +245,7 @@ if (spisakRadnika) {
         formDodajTelefon.style.display = 'none';
         formDodajRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
 
         formSpisakRadnika.style.display = 'flex';
         listItems('http://127.0.0.1:3000/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
@@ -222,6 +260,7 @@ if (izmeniRadnika) {
         formDodajTelefon.style.display = 'none';
         formDodajRadnika.style.display = 'none';
         formSpisakRadnika.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
 
         formIzmeniRadnika.style.display = 'flex';
     });
@@ -233,7 +272,6 @@ if (btn__findUser) {
     btn__findUser.addEventListener('click', function () {
         const userId = document.getElementById('update__userID')
         const userInfoEl = document.querySelector('.form__inputContainer');
-
         if (!userId.value) {
             showAlert('loginFail', 'Unesite ID korisnika!');
         } else {
