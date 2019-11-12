@@ -8360,7 +8360,7 @@ exports.displayCategories = displayCategories;
 
 var phoneInfo = function phoneInfo(data, parentEl) {
   clearItems(parentEl);
-  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" id=\"update__phoneName\" value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" id=\"update__phoneModel\" value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" id=\"update__phoneYear\" value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" id=\"update__phoneCategory\" value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" id=\"update__phonePriceNov\" value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" id=\"update__phonePricePol\" value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button\" id=\"btn__updatePhone\">Sacuvaj</a>\n                ");
+  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" id=\"update__phoneName\" value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" id=\"update__phoneModel\" value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" id=\"update__phoneYear\" value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" id=\"update__phoneCategory\" value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" id=\"update__phonePriceNov\" value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" id=\"update__phonePricePol\" value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button btn__updatePhone\" id=\"btn__updatePhone\">Sacuvaj</a>\n                ");
   parentEl.insertAdjacentHTML('beforeend', markup);
 };
 
@@ -8765,26 +8765,25 @@ function () {
 
           case 3:
             res = _context7.sent;
-            console.log(res);
 
             if (res.data.status === 'success') {
               (0, _itemFunctions.phoneInfo)(res.data.data.telefon[0], parentEl);
             }
 
-            _context7.next = 11;
+            _context7.next = 10;
             break;
 
-          case 8:
-            _context7.prev = 8;
+          case 7:
+            _context7.prev = 7;
             _context7.t0 = _context7["catch"](0);
             (0, _alerts.showAlert)('loginFail', _context7.t0.response.data.message);
 
-          case 11:
+          case 10:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7, null, [[0, 8]]);
+    }, _callee7, null, [[0, 7]]);
   }));
 
   return function api__findPhone(_x17, _x18) {
@@ -8800,7 +8799,7 @@ var api__updatePhone =
 function () {
   var _ref8 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee8(slug, name, model, year, category, pricePol, priceNov, fields) {
+  regeneratorRuntime.mark(function _callee8(parentEl, slug, name, model, year, category, pricePol, priceNov, fields) {
     var res;
     return regeneratorRuntime.wrap(function _callee8$(_context8) {
       while (1) {
@@ -8810,7 +8809,7 @@ function () {
             _context8.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://127.0.0.1:3000/api/v1/telefoni",
+              url: "http://127.0.0.1:3000/api/v1/telefoni/".concat(slug),
               data: {
                 name: name,
                 model: model,
@@ -8827,6 +8826,7 @@ function () {
             if (res.data.status === 'success') {
               (0, _alerts.showAlert)('loginSuccess', 'Telefon uspesno izmenjen!');
               (0, _itemFunctions.clearFields)(fields);
+              (0, _itemFunctions.clearItems)(parentEl);
             }
 
             _context8.next = 10;
@@ -8845,7 +8845,7 @@ function () {
     }, _callee8, null, [[0, 7]]);
   }));
 
-  return function api__updatePhone(_x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26) {
+  return function api__updatePhone(_x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27) {
     return _ref8.apply(this, arguments);
   };
 }(); // create new user
@@ -8901,7 +8901,7 @@ function () {
     }, _callee9, null, [[0, 7]]);
   }));
 
-  return function api__createUser(_x27, _x28, _x29, _x30, _x31) {
+  return function api__createUser(_x28, _x29, _x30, _x31, _x32) {
     return _ref9.apply(this, arguments);
   };
 }();
@@ -8950,7 +8950,7 @@ function () {
     }, _callee10, null, [[0, 7]]);
   }));
 
-  return function api__deleteUser(_x32) {
+  return function api__deleteUser(_x33) {
     return _ref10.apply(this, arguments);
   };
 }(); // find user and display his data
@@ -9001,7 +9001,7 @@ function () {
     }, _callee11, null, [[0, 7]]);
   }));
 
-  return function api__findUser(_x33, _x34) {
+  return function api__findUser(_x34, _x35) {
     return _ref11.apply(this, arguments);
   };
 }(); // update user
@@ -9056,7 +9056,7 @@ function () {
     }, _callee12, null, [[0, 7]]);
   }));
 
-  return function api__updateUser(_x35, _x36, _x37, _x38, _x39) {
+  return function api__updateUser(_x36, _x37, _x38, _x39, _x40) {
     return _ref12.apply(this, arguments);
   };
 }();
@@ -9482,10 +9482,10 @@ if (izmeniTelefon) {
   });
 }
 
-var btn__updatePhone = document.getElementById('btn__findPhoneUpdate');
+var btn__findPhone = document.getElementById('btn__findPhoneUpdate');
 
-if (btn__updatePhone) {
-  btn__updatePhone.addEventListener('click', function () {
+if (btn__findPhone) {
+  btn__findPhone.addEventListener('click', function () {
     var updatePhoneSlug = document.getElementById('update_phoneSlug');
     var formParent = document.querySelector('.phoneUpdate__inputContainer');
 
@@ -9493,6 +9493,28 @@ if (btn__updatePhone) {
       (0, _alerts.showAlert)('loginFail', 'Popunite polje!');
     } else {
       (0, _api_functions.api__findPhone)(updatePhoneSlug.value, formParent);
+    }
+  });
+}
+
+if (formIzmeniTelefon) {
+  formIzmeniTelefon.addEventListener('click', function (e) {
+    if (e.target.id === 'btn__updatePhone') {
+      var update__phoneName = document.getElementById('update__phoneName');
+      var update__phoneModel = document.getElementById('update__phoneModel');
+      var update__phoneYear = document.getElementById('update__phoneYear');
+      var update__phoneCategory = document.getElementById('update__phoneCategory');
+      var update__phonePricePol = document.getElementById('update__phonePricePol');
+      var update__phonePriceNov = document.getElementById('update__phonePriceNov');
+      var slug = document.getElementById('update_phoneSlug');
+      var parent = document.querySelector('.phoneUpdate__inputContainer');
+      var fields = [slug, update__phoneName, update__phoneModel, update__phoneYear, update__phoneCategory, update__phonePricePol, update__phonePriceNov];
+
+      if (!update__phoneName.value || !update__phoneModel.value || !update__phoneYear.value || !update__phoneCategory.value || !update__phonePriceNov.value || !update__phonePricePol.value) {
+        (0, _alerts.showAlert)('loginFail', 'Polje ne sme ostati prazno!');
+      } else {
+        (0, _api_functions.api__updatePhone)(parent, slug.value, update__phoneName.value, update__phoneModel.value, update__phoneYear.value, update__phoneCategory.value, update__phonePricePol.value, update__phonePriceNov.value, fields);
+      }
     }
   });
 } // ///////////////////////////// User functions

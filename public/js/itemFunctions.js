@@ -38,7 +38,7 @@ export const phoneInfo = (data, parentEl) => {
                         <label>Cena polovan:</label>
                         <input type="text" id="update__phonePricePol" value="${data.pricePol}">
                     </div>
-                    <a href="#" class="form__button" id="btn__updatePhone">Sacuvaj</a>
+                    <a href="#" class="form__button btn__updatePhone" id="btn__updatePhone">Sacuvaj</a>
                 `
     parentEl.insertAdjacentHTML('beforeend', markup);
 }

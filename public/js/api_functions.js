@@ -125,7 +125,6 @@ export const api__findPhone = async (slug, parentEl) => {
             method: 'GET',
             url: `http://127.0.0.1:3000/api/v1/telefoni/${slug}`,
         });
-        console.log(res);
         if (res.data.status === 'success') {
             phoneInfo(res.data.data.telefon[0], parentEl)
         }
@@ -135,11 +134,11 @@ export const api__findPhone = async (slug, parentEl) => {
 }
 
 // update phone
-export const api__updatePhone = async (slug, name, model, year, category, pricePol, priceNov, fields) => {
+export const api__updatePhone = async (parentEl, slug, name, model, year, category, pricePol, priceNov, fields) => {
     try {
         const res = await axios({
             method: 'PATCH',
-            url: `http://127.0.0.1:3000/api/v1/telefoni`,
+            url: `http://127.0.0.1:3000/api/v1/telefoni/${slug}`,
             data: {
                 name,
                 model,
@@ -152,6 +151,7 @@ export const api__updatePhone = async (slug, name, model, year, category, priceP
         if (res.data.status === 'success') {
             showAlert('loginSuccess', 'Telefon uspesno izmenjen!');
             clearFields(fields);
+            clearItems(parentEl);
         }
     } catch (err) {
         showAlert('loginFail', err.response.data.message);
