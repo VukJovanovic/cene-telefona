@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 // Routers 
 const categoryRouter = require('./routes/categoryRoutes');
@@ -53,6 +54,8 @@ app.use(xss());
 
 // Prevent parameter pollution 
 app.use(hpp());
+
+app.use(compression());
 
 // Routes
 app.use('/', viewRouter);
