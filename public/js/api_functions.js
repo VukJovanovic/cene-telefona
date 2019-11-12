@@ -49,9 +49,9 @@ export const listItems = async (url, method, parentElement, heading) => {
             method: method,
             url: url
         });
-        if (url === 'http://127.0.0.1:3000/api/v1/radnici') {
+        if (url === '/api/v1/radnici') {
             displayUsers(res.data.data.radnici, parentElement, heading);
-        } else if (url === 'http://127.0.0.1:3000/api/v1/kategorije') {
+        } else if (url === '/api/v1/kategorije') {
             displayCategories(res.data.data.kategorije, parentElement, heading)
         }
     } catch (err) {
@@ -64,7 +64,7 @@ export const api__createCategory = async (naziv, fields) => {
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/kategorije',
+            url: '/api/v1/kategorije',
             data: {
                 name: naziv,
             }
@@ -83,7 +83,7 @@ export const api__deleteCategory = async (categoryID) => {
     try {
         const res = await axios({
             method: 'DELETE',
-            url: `http://127.0.0.1:3000/api/v1/kategorije/${categoryID}`
+            url: `/api/v1/kategorije/${categoryID}`
         });
         if (res.data.status === 'success') {
             showAlert('loginSuccess', 'Kategorija uspesno izbrisana!');
@@ -99,7 +99,7 @@ export const api__createPhone = async (naziv, model, godina, kategorija, cenaPol
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/telefoni',
+            url: '/api/v1/telefoni',
             data: {
                 name: naziv,
                 model: model,
@@ -123,7 +123,7 @@ export const api__findPhone = async (slug, parentEl) => {
     try {
         const res = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:3000/api/v1/telefoni/${slug}`,
+            url: `/api/v1/telefoni/${slug}`,
         });
         if (res.data.status === 'success') {
             phoneInfo(res.data.data.telefon[0], parentEl)
@@ -138,7 +138,7 @@ export const api__updatePhone = async (parentEl, slug, name, model, year, catego
     try {
         const res = await axios({
             method: 'PATCH',
-            url: `http://127.0.0.1:3000/api/v1/telefoni/${slug}`,
+            url: `/api/v1/telefoni/${slug}`,
             data: {
                 name,
                 model,
@@ -163,7 +163,7 @@ export const api__createUser = async (ime, email, sifra, uloga, fields) => {
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/radnici',
+            url: '/api/v1/radnici',
             data: {
                 name: ime,
                 email: email,
@@ -184,7 +184,7 @@ export const api__deleteUser = async (userID) => {
     try {
         const res = await axios({
             method: 'DELETE',
-            url: `http://127.0.0.1:3000/api/v1/radnici/${userID}`
+            url: `/api/v1/radnici/${userID}`
         });
         if (res.data.status === 'success') {
             showAlert('loginSuccess', 'Radnik je uspesno izbrisan!');
@@ -200,7 +200,7 @@ export const api__findUser = async (userId, infoParent) => {
     try {
         const res = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:3000/api/v1/radnici/${userId}`
+            url: `/api/v1/radnici/${userId}`
         });
         if (res.data.status === 'success') {
             userInfo(res.data.data.radnik, infoParent)
@@ -217,7 +217,7 @@ export const api__updateUser = async (userId, userName, userEmail, userRole, par
     try {
         const res = await axios({
             method: 'PATCH',
-            url: `http://127.0.0.1:3000/api/v1/radnici/${userId}`,
+            url: `/api/v1/radnici/${userId}`,
             data: {
                 name: userName,
                 email: userEmail,

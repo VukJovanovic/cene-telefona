@@ -8554,9 +8554,9 @@ function () {
           case 3:
             res = _context3.sent;
 
-            if (url === 'http://127.0.0.1:3000/api/v1/radnici') {
+            if (url === '/api/v1/radnici') {
               (0, _itemFunctions.displayUsers)(res.data.data.radnici, parentElement, heading);
-            } else if (url === 'http://127.0.0.1:3000/api/v1/kategorije') {
+            } else if (url === '/api/v1/kategorije') {
               (0, _itemFunctions.displayCategories)(res.data.data.kategorije, parentElement, heading);
             }
 
@@ -8599,7 +8599,7 @@ function () {
             _context4.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/kategorije',
+              url: '/api/v1/kategorije',
               data: {
                 name: naziv
               }
@@ -8652,7 +8652,7 @@ function () {
             _context5.next = 3;
             return (0, _axios.default)({
               method: 'DELETE',
-              url: "http://127.0.0.1:3000/api/v1/kategorije/".concat(categoryID)
+              url: "/api/v1/kategorije/".concat(categoryID)
             });
 
           case 3:
@@ -8702,7 +8702,7 @@ function () {
             _context6.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/telefoni',
+              url: '/api/v1/telefoni',
               data: {
                 name: naziv,
                 model: model,
@@ -8760,7 +8760,7 @@ function () {
             _context7.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: "http://127.0.0.1:3000/api/v1/telefoni/".concat(slug)
+              url: "/api/v1/telefoni/".concat(slug)
             });
 
           case 3:
@@ -8809,7 +8809,7 @@ function () {
             _context8.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://127.0.0.1:3000/api/v1/telefoni/".concat(slug),
+              url: "/api/v1/telefoni/".concat(slug),
               data: {
                 name: name,
                 model: model,
@@ -8868,7 +8868,7 @@ function () {
             _context9.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/radnici',
+              url: '/api/v1/radnici',
               data: {
                 name: ime,
                 email: email,
@@ -8923,7 +8923,7 @@ function () {
             _context10.next = 3;
             return (0, _axios.default)({
               method: 'DELETE',
-              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userID)
+              url: "/api/v1/radnici/".concat(userID)
             });
 
           case 3:
@@ -8973,7 +8973,7 @@ function () {
             _context11.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userId)
+              url: "/api/v1/radnici/".concat(userId)
             });
 
           case 3:
@@ -9024,7 +9024,7 @@ function () {
             _context12.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://127.0.0.1:3000/api/v1/radnici/".concat(userId),
+              url: "/api/v1/radnici/".concat(userId),
               data: {
                 name: userName,
                 email: userEmail,
