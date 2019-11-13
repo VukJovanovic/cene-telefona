@@ -20,7 +20,7 @@ html
                     .admin__functions
                         h2 Telefon
                         a.dodajTelefon(href='#') Dodaj Telefon
-                        a(href='#') Obriši Telefon
+                        a.obrisiTelefon(href='#') Obriši Telefon
                         a.izmeniTelefon(href='#') Izmeni Telefon
                     - if(user)
                         - if(user.role === 'admin')
@@ -68,6 +68,13 @@ html
                         input(type='text' id='update_phoneSlug' placeholder='samsung-s10')
                     a.form__button(href='#' id='btn__findPhoneUpdate') Pronadji
                     .phoneUpdate__inputContainer  
+                .form(id='formObrisiTelefon')
+                    h2.form__heading Obrisi Telefon
+                    .form__group
+                        label(for='') Slug:
+                        input(type='text' id='delete_phoneSlug' placeholder='samsung-s10')
+                    a.form__button(href='#' id='btn__findPhoneDelete') Pronadji
+                    .phoneDelete__inputContainer  
                 .form(id='formDodajRadnika')
                     h2.form__heading Dodaj Radnika
                     .form__group

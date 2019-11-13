@@ -99,10 +99,10 @@ exports.updatePhone = async (req, res, next) => {
 // Delete phone
 exports.deletePhone = async (req, res, next) => {
     try {
-        const telefon = await PhoneModel.findByIdAndDelete(req.params.id);
+        const telefon = await PhoneModel.findOneAndDelete({ slug: req.params.slug })
 
         if (!telefon) {
-            return next(new AppError('Ne postoji telefon sa ovim ID.', 404));
+            return next(new AppError('Ne postoji telefon sa ovim slugom.', 404));
         }
 
         res.status(201).json({

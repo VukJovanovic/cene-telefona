@@ -43,6 +43,36 @@ export const phoneInfo = (data, parentEl) => {
     parentEl.insertAdjacentHTML('beforeend', markup);
 }
 
+export const phoneDeleteInfo = (data, parentEl) => {
+    clearItems(parentEl);
+    let markup = `<div class="form__group">
+                        <label>Naziv:</label>
+                        <input type="text" disabled value="${data.name}">
+                    </div>
+                    <div class="form__group">
+                        <label>Model:</label>
+                        <input type="text" disabled value="${data.model}">
+                    </div>
+                    <div class="form__group">
+                        <label>Godina:</label>
+                        <input type="text" disabled value="${data.year}">
+                    </div>
+                    <div class="form__group">
+                        <label>Kategorija:</label>
+                        <input type="text" disabled value="${data.category}">
+                    </div>
+                    <div class="form__group">
+                        <label>Cena nov:</label>
+                        <input type="text" disabled value="${data.priceNov}">
+                    </div>
+                    <div class="form__group">
+                        <label>Cena polovan:</label>
+                        <input type="text" disabled value="${data.pricePol}">
+                    </div>
+                    <a href="#" class="form__button btn__deletePhone" id="btn__deletePhone">Obrisi</a>`
+    parentEl.insertAdjacentHTML('beforeend', markup);
+}
+
 export const displayUsers = (data, parentEl, heading) => {
     clearItems(parentEl);
     let markup = `<h2 class="form__heading">${heading}</h2>`;
