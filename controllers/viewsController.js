@@ -17,8 +17,12 @@ exports.getOverview = async (req, res, next) => {
 // Render category page and display data on it
 exports.getPhonesByCategory = async (req, res, next) => {
     try {
-        filter = req.params.slug;
-        const phones = await phoneModel.find({ category: filter }).sort({ year: -1, month: -1 });
+        const filter = req.params.slug;
+        const sortFilter = {
+            year: -1,
+            month: -1
+        }
+        const phones = await phoneModel.find({ category: filter }).sort(sortFilter);
         res.status(200).render('phones', {
             title: phones[0].category,
             phones
