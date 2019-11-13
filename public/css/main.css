@@ -740,6 +740,10 @@ body {
   text-align: center;
 }
 .mainMenu__container-content .mobileDropdownNavigation__tab-content {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
   padding: 0rem 5rem;
   text-align: justify;
   max-height: 0;
@@ -1322,7 +1326,7 @@ body {
 }
 .ErrorPageContainer .errorContent {
   width: 100%;
-  background-image: url("../images/error.svg");
+  background-image: url("/error.da55bd8e.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 300px;

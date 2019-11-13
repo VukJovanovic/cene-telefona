@@ -9414,7 +9414,7 @@ if (obrisiKategoriju) {
     formIzmeniTelefon.style.display = 'none'; // get all categories from api
 
     formObrisiKategoriju.style.display = 'flex';
-    (0, _api_functions.listItems)('http://127.0.0.1:3000/api/v1/kategorije', 'GET', formObrisiKategoriju, 'Obrisi Kategoriju');
+    (0, _api_functions.listItems)('/api/v1/kategorije', 'GET', formObrisiKategoriju, 'Obrisi Kategoriju');
   });
 } // Delete category
 
@@ -9574,7 +9574,7 @@ if (spisakRadnika) {
     formIzmeniRadnika.style.display = 'none';
     formIzmeniTelefon.style.display = 'none';
     formSpisakRadnika.style.display = 'flex';
-    (0, _api_functions.listItems)('http://127.0.0.1:3000/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
+    (0, _api_functions.listItems)('/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
   });
 } // update user
 
@@ -9651,7 +9651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52303" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54617" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -93,7 +93,7 @@ if (obrisiKategoriju) {
 
         // get all categories from api
         formObrisiKategoriju.style.display = 'flex';
-        listItems('http://127.0.0.1:3000/api/v1/kategorije', 'GET', formObrisiKategoriju, 'Obrisi Kategoriju');
+        listItems('/api/v1/kategorije', 'GET', formObrisiKategoriju, 'Obrisi Kategoriju');
     });
 }
 
@@ -270,7 +270,7 @@ if (spisakRadnika) {
         formIzmeniTelefon.style.display = 'none';
 
         formSpisakRadnika.style.display = 'flex';
-        listItems('http://127.0.0.1:3000/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
+        listItems('/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
     })
 }
 
