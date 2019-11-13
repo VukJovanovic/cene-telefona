@@ -150,7 +150,7 @@ if (btn__createPhone) {
         const phonePricePol = document.getElementById('add__phonePricePol');
         const phonePriceNov = document.getElementById('add__phonePriceNov');
 
-        const dodajTelefonInputFields = [phoneName, phoneModel, phoneYear, phoneCategory, phonePricePol, phonePriceNov]
+        const dodajTelefonInputFields = [phoneName, phoneModel, phoneYear, phoneMonth, phoneCategory, phonePricePol, phonePriceNov]
 
         if (!phoneName.value || !phoneModel.value || !phoneYear.value || !phoneMonth.value || !phoneCategory.value || !phonePricePol.value || !phonePriceNov.value) {
             showAlert('loginFail', 'Popunite sva polja!');

@@ -14,7 +14,7 @@ const phoneSchema = new mongoose.Schema({
         unique: true
     },
     year: {
-        type: String,
+        type: Number,
         required: [true, 'Svaki telefon mora imati godinu proizvodnje.']
     },
     month: {
