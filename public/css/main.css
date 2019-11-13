@@ -203,8 +203,8 @@ body {
   grid-column: 2/3;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 70px -webkit-max-content 60px -webkit-max-content 90px -webkit-max-content -webkit-max-content;
-  grid-template-rows: 70px max-content 60px max-content 90px max-content max-content;
+  grid-template-rows: 70px -webkit-max-content 60px -webkit-max-content 80px -webkit-max-content -webkit-max-content;
+  grid-template-rows: 70px max-content 60px max-content 80px max-content max-content;
 }
 .container .content__container .content__searchForm {
   grid-row: 2/3;
@@ -335,6 +335,7 @@ body {
   display: grid;
   grid-template-columns: -webkit-max-content;
   grid-template-columns: max-content;
+  grid-column: 2/3;
 }
 
 .leftShape,
@@ -1047,7 +1048,12 @@ body {
 }
 
 .adminContainer__leftSide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
   height: 100vh;
+  width: 30rem;
   background-color: #dbdee0;
 }
 .adminContainer__leftSide-menu {
