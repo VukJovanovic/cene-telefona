@@ -27,6 +27,10 @@ export const phoneInfo = (data, parentEl) => {
                         <input type="text" id="update__phoneYear" value="${data.year}">
                     </div>
                     <div class="form__group">
+                        <label>Mesec:</label>
+                        <input type="text" id="update__phoneMonth" value="${data.month}">
+                    </div>
+                    <div class="form__group">
                         <label>Kategorija:</label>
                         <input type="text" id="update__phoneCategory" value="${data.category}">
                     </div>
@@ -56,6 +60,10 @@ export const phoneDeleteInfo = (data, parentEl) => {
                     <div class="form__group">
                         <label>Godina:</label>
                         <input type="text" disabled value="${data.year}">
+                    </div>
+                    <div class="form__group">
+                        <label>Mesec:</label>
+                        <input type="text" disabled value="${data.month}">
                     </div>
                     <div class="form__group">
                         <label>Kategorija:</label>

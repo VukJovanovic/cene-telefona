@@ -8360,7 +8360,7 @@ exports.displayCategories = displayCategories;
 
 var phoneInfo = function phoneInfo(data, parentEl) {
   clearItems(parentEl);
-  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" id=\"update__phoneName\" value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" id=\"update__phoneModel\" value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" id=\"update__phoneYear\" value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" id=\"update__phoneCategory\" value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" id=\"update__phonePriceNov\" value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" id=\"update__phonePricePol\" value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button btn__updatePhone\" id=\"btn__updatePhone\">Sacuvaj</a>\n                ");
+  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" id=\"update__phoneName\" value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" id=\"update__phoneModel\" value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" id=\"update__phoneYear\" value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Mesec:</label>\n                        <input type=\"text\" id=\"update__phoneMonth\" value=\"").concat(data.month, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" id=\"update__phoneCategory\" value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" id=\"update__phonePriceNov\" value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" id=\"update__phonePricePol\" value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button btn__updatePhone\" id=\"btn__updatePhone\">Sacuvaj</a>\n                ");
   parentEl.insertAdjacentHTML('beforeend', markup);
 };
 
@@ -8368,7 +8368,7 @@ exports.phoneInfo = phoneInfo;
 
 var phoneDeleteInfo = function phoneDeleteInfo(data, parentEl) {
   clearItems(parentEl);
-  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" disabled value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button btn__deletePhone\" id=\"btn__deletePhone\">Obrisi</a>");
+  var markup = "<div class=\"form__group\">\n                        <label>Naziv:</label>\n                        <input type=\"text\" disabled value=\"".concat(data.name, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Model:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.model, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Godina:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.year, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Mesec:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.month, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Kategorija:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.category, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena nov:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.priceNov, "\">\n                    </div>\n                    <div class=\"form__group\">\n                        <label>Cena polovan:</label>\n                        <input type=\"text\" disabled value=\"").concat(data.pricePol, "\">\n                    </div>\n                    <a href=\"#\" class=\"form__button btn__deletePhone\" id=\"btn__deletePhone\">Obrisi</a>");
   parentEl.insertAdjacentHTML('beforeend', markup);
 };
 
@@ -8700,7 +8700,7 @@ var api__createPhone =
 function () {
   var _ref6 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee6(naziv, model, godina, kategorija, cenaPol, cenaNov, fields) {
+  regeneratorRuntime.mark(function _callee6(naziv, model, godina, mesec, kategorija, cenaPol, cenaNov, fields) {
     var res;
     return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
@@ -8715,6 +8715,7 @@ function () {
                 name: naziv,
                 model: model,
                 year: godina,
+                month: mesec,
                 category: kategorija,
                 pricePol: cenaPol,
                 priceNov: cenaNov
@@ -8745,7 +8746,7 @@ function () {
     }, _callee6, null, [[0, 7]]);
   }));
 
-  return function api__createPhone(_x10, _x11, _x12, _x13, _x14, _x15, _x16) {
+  return function api__createPhone(_x10, _x11, _x12, _x13, _x14, _x15, _x16, _x17) {
     return _ref6.apply(this, arguments);
   };
 }(); // find phone
@@ -8798,7 +8799,7 @@ function () {
     }, _callee7, null, [[0, 7]]);
   }));
 
-  return function api__findPhone(_x17, _x18, _x19) {
+  return function api__findPhone(_x18, _x19, _x20) {
     return _ref7.apply(this, arguments);
   };
 }(); // update phone
@@ -8811,7 +8812,7 @@ var api__updatePhone =
 function () {
   var _ref8 = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee8(parentEl, slug, name, model, year, category, pricePol, priceNov, fields) {
+  regeneratorRuntime.mark(function _callee8(parentEl, slug, name, model, year, month, category, pricePol, priceNov, fields) {
     var res;
     return regeneratorRuntime.wrap(function _callee8$(_context8) {
       while (1) {
@@ -8826,6 +8827,7 @@ function () {
                 name: name,
                 model: model,
                 year: year,
+                month: month,
                 category: category,
                 pricePol: pricePol,
                 priceNov: priceNov
@@ -8857,7 +8859,7 @@ function () {
     }, _callee8, null, [[0, 7]]);
   }));
 
-  return function api__updatePhone(_x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27, _x28) {
+  return function api__updatePhone(_x21, _x22, _x23, _x24, _x25, _x26, _x27, _x28, _x29, _x30) {
     return _ref8.apply(this, arguments);
   };
 }(); // delete phone
@@ -8908,7 +8910,7 @@ function () {
     }, _callee9, null, [[0, 7]]);
   }));
 
-  return function api__deletePhone(_x29, _x30, _x31) {
+  return function api__deletePhone(_x31, _x32, _x33) {
     return _ref9.apply(this, arguments);
   };
 }(); // create new user
@@ -8964,7 +8966,7 @@ function () {
     }, _callee10, null, [[0, 7]]);
   }));
 
-  return function api__createUser(_x32, _x33, _x34, _x35, _x36) {
+  return function api__createUser(_x34, _x35, _x36, _x37, _x38) {
     return _ref10.apply(this, arguments);
   };
 }();
@@ -9013,7 +9015,7 @@ function () {
     }, _callee11, null, [[0, 7]]);
   }));
 
-  return function api__deleteUser(_x37) {
+  return function api__deleteUser(_x39) {
     return _ref11.apply(this, arguments);
   };
 }(); // find user and display his data
@@ -9064,7 +9066,7 @@ function () {
     }, _callee12, null, [[0, 7]]);
   }));
 
-  return function api__findUser(_x38, _x39) {
+  return function api__findUser(_x40, _x41) {
     return _ref12.apply(this, arguments);
   };
 }(); // update user
@@ -9119,7 +9121,7 @@ function () {
     }, _callee13, null, [[0, 7]]);
   }));
 
-  return function api__updateUser(_x40, _x41, _x42, _x43, _x44) {
+  return function api__updateUser(_x42, _x43, _x44, _x45, _x46) {
     return _ref13.apply(this, arguments);
   };
 }();
@@ -9522,15 +9524,16 @@ if (btn__createPhone) {
     var phoneName = document.getElementById('add__phoneName');
     var phoneModel = document.getElementById('add__phoneModel');
     var phoneYear = document.getElementById('add__phoneYear');
+    var phoneMonth = document.getElementById('add__phoneMonth');
     var phoneCategory = document.getElementById('add__phoneCategory');
     var phonePricePol = document.getElementById('add__phonePricePol');
     var phonePriceNov = document.getElementById('add__phonePriceNov');
     var dodajTelefonInputFields = [phoneName, phoneModel, phoneYear, phoneCategory, phonePricePol, phonePriceNov];
 
-    if (!phoneName.value || !phoneModel.value || !phoneYear.value || !phoneCategory.value || !phonePricePol.value || !phonePriceNov.value) {
+    if (!phoneName.value || !phoneModel.value || !phoneYear.value || !phoneMonth.value || !phoneCategory.value || !phonePricePol.value || !phonePriceNov.value) {
       (0, _alerts.showAlert)('loginFail', 'Popunite sva polja!');
     } else {
-      (0, _api_functions.api__createPhone)(phoneName.value, phoneModel.value, phoneYear.value, phoneCategory.value, phonePricePol.value, phonePriceNov.value, dodajTelefonInputFields);
+      (0, _api_functions.api__createPhone)(phoneName.value, phoneModel.value, phoneYear.value, phoneMonth.value, phoneCategory.value, phonePricePol.value, phonePriceNov.value, dodajTelefonInputFields);
     }
   });
 } // Editing phone
@@ -9572,17 +9575,18 @@ if (formIzmeniTelefon) {
       var update__phoneName = document.getElementById('update__phoneName');
       var update__phoneModel = document.getElementById('update__phoneModel');
       var update__phoneYear = document.getElementById('update__phoneYear');
+      var update__phoneMonth = document.getElementById('update__phoneMonth');
       var update__phoneCategory = document.getElementById('update__phoneCategory');
       var update__phonePricePol = document.getElementById('update__phonePricePol');
       var update__phonePriceNov = document.getElementById('update__phonePriceNov');
       var slug = document.getElementById('update_phoneSlug');
       var parent = document.querySelector('.phoneUpdate__inputContainer');
-      var fields = [slug, update__phoneName, update__phoneModel, update__phoneYear, update__phoneCategory, update__phonePricePol, update__phonePriceNov];
+      var fields = [slug, update__phoneName, update__phoneModel, update__phoneYear, update__phoneMonth, update__phoneCategory, update__phonePricePol, update__phonePriceNov];
 
-      if (!update__phoneName.value || !update__phoneModel.value || !update__phoneYear.value || !update__phoneCategory.value || !update__phonePriceNov.value || !update__phonePricePol.value) {
+      if (!update__phoneName.value || !update__phoneModel.value || !update__phoneYear.value || !update__phoneMonth.value || !update__phoneCategory.value || !update__phonePriceNov.value || !update__phonePricePol.value) {
         (0, _alerts.showAlert)('loginFail', 'Polje ne sme ostati prazno!');
       } else {
-        (0, _api_functions.api__updatePhone)(parent, slug.value, update__phoneName.value, update__phoneModel.value, update__phoneYear.value, update__phoneCategory.value, update__phonePricePol.value, update__phonePriceNov.value, fields);
+        (0, _api_functions.api__updatePhone)(parent, slug.value, update__phoneName.value, update__phoneModel.value, update__phoneYear.value, update__phoneMonth.value, update__phoneCategory.value, update__phonePricePol.value, update__phonePriceNov.value, fields);
       }
     }
   });

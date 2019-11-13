@@ -18,7 +18,7 @@ exports.getOverview = async (req, res, next) => {
 exports.getPhonesByCategory = async (req, res, next) => {
     try {
         filter = req.params.slug;
-        const phones = await phoneModel.find({ category: filter });
+        const phones = await phoneModel.find({ category: filter }).sort({ year: -1, month: -1 });
         res.status(200).render('phones', {
             title: phones[0].category,
             phones

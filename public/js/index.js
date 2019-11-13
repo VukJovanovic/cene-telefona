@@ -145,16 +145,17 @@ if (btn__createPhone) {
         const phoneName = document.getElementById('add__phoneName');
         const phoneModel = document.getElementById('add__phoneModel');
         const phoneYear = document.getElementById('add__phoneYear');
+        const phoneMonth = document.getElementById('add__phoneMonth');
         const phoneCategory = document.getElementById('add__phoneCategory');
         const phonePricePol = document.getElementById('add__phonePricePol');
         const phonePriceNov = document.getElementById('add__phonePriceNov');
 
         const dodajTelefonInputFields = [phoneName, phoneModel, phoneYear, phoneCategory, phonePricePol, phonePriceNov]
 
-        if (!phoneName.value || !phoneModel.value || !phoneYear.value || !phoneCategory.value || !phonePricePol.value || !phonePriceNov.value) {
+        if (!phoneName.value || !phoneModel.value || !phoneYear.value || !phoneMonth.value || !phoneCategory.value || !phonePricePol.value || !phonePriceNov.value) {
             showAlert('loginFail', 'Popunite sva polja!');
         } else {
-            api__createPhone(phoneName.value, phoneModel.value, phoneYear.value, phoneCategory.value, phonePricePol.value, phonePriceNov.value, dodajTelefonInputFields);
+            api__createPhone(phoneName.value, phoneModel.value, phoneYear.value, phoneMonth.value, phoneCategory.value, phonePricePol.value, phonePriceNov.value, dodajTelefonInputFields);
         }
     });
 }
@@ -196,17 +197,18 @@ if (formIzmeniTelefon) {
             const update__phoneName = document.getElementById('update__phoneName');
             const update__phoneModel = document.getElementById('update__phoneModel');
             const update__phoneYear = document.getElementById('update__phoneYear');
+            const update__phoneMonth = document.getElementById('update__phoneMonth');
             const update__phoneCategory = document.getElementById('update__phoneCategory');
             const update__phonePricePol = document.getElementById('update__phonePricePol');
             const update__phonePriceNov = document.getElementById('update__phonePriceNov');
             const slug = document.getElementById('update_phoneSlug');
             const parent = document.querySelector('.phoneUpdate__inputContainer')
-            const fields = [slug, update__phoneName, update__phoneModel, update__phoneYear, update__phoneCategory, update__phonePricePol, update__phonePriceNov];
+            const fields = [slug, update__phoneName, update__phoneModel, update__phoneYear, update__phoneMonth, update__phoneCategory, update__phonePricePol, update__phonePriceNov];
 
-            if (!update__phoneName.value || !update__phoneModel.value || !update__phoneYear.value || !update__phoneCategory.value || !update__phonePriceNov.value || !update__phonePricePol.value) {
+            if (!update__phoneName.value || !update__phoneModel.value || !update__phoneYear.value || !update__phoneMonth.value || !update__phoneCategory.value || !update__phonePriceNov.value || !update__phonePricePol.value) {
                 showAlert('loginFail', 'Polje ne sme ostati prazno!');
             } else {
-                api__updatePhone(parent, slug.value, update__phoneName.value, update__phoneModel.value, update__phoneYear.value, update__phoneCategory.value, update__phonePricePol.value, update__phonePriceNov.value, fields);
+                api__updatePhone(parent, slug.value, update__phoneName.value, update__phoneModel.value, update__phoneYear.value, update__phoneMonth.value, update__phoneCategory.value, update__phonePricePol.value, update__phonePriceNov.value, fields);
             }
         }
     });

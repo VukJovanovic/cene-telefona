@@ -95,7 +95,7 @@ export const api__deleteCategory = async (categoryID) => {
 }
 
 // creating new phone
-export const api__createPhone = async (naziv, model, godina, kategorija, cenaPol, cenaNov, fields) => {
+export const api__createPhone = async (naziv, model, godina, mesec, kategorija, cenaPol, cenaNov, fields) => {
     try {
         const res = await axios({
             method: 'POST',
@@ -104,6 +104,7 @@ export const api__createPhone = async (naziv, model, godina, kategorija, cenaPol
                 name: naziv,
                 model: model,
                 year: godina,
+                month: mesec,
                 category: kategorija,
                 pricePol: cenaPol,
                 priceNov: cenaNov
@@ -138,7 +139,7 @@ export const api__findPhone = async (slug, parentEl, action) => {
 }
 
 // update phone
-export const api__updatePhone = async (parentEl, slug, name, model, year, category, pricePol, priceNov, fields) => {
+export const api__updatePhone = async (parentEl, slug, name, model, year, month, category, pricePol, priceNov, fields) => {
     try {
         const res = await axios({
             method: 'PATCH',
@@ -147,6 +148,7 @@ export const api__updatePhone = async (parentEl, slug, name, model, year, catego
                 name,
                 model,
                 year,
+                month,
                 category,
                 pricePol,
                 priceNov
