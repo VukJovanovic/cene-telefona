@@ -20,7 +20,7 @@
           padding-bottom: 1rem;
 
           &::after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: 0;
             left: 25%;
@@ -63,7 +63,7 @@
         padding-bottom: 1rem;
 
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 0;
@@ -119,11 +119,11 @@
         }
       }
       .form__inputContainer,
-      .phoneUpdate__inputContainer {
+      .phoneUpdate__inputContainer,
+      .phoneDelete__inputContainer {
         margin-top: 3rem;
         border-top: 1px solid $primary-color;
         padding-top: 2rem;
-        
       }
     }
   }

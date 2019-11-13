@@ -1174,7 +1174,8 @@ body {
   background-color: #f56a79;
 }
 .adminContainer__rightSide .form .form__inputContainer,
-.adminContainer__rightSide .form .phoneUpdate__inputContainer {
+.adminContainer__rightSide .form .phoneUpdate__inputContainer,
+.adminContainer__rightSide .form .phoneDelete__inputContainer {
   margin-top: 3rem;
   border-top: 1px solid #f56a79;
   padding-top: 2rem;

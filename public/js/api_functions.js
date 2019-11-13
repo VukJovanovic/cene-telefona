@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
-import { displayCategories, displayUsers, userInfo, phoneInfo } from './itemFunctions';
+import { displayCategories, displayUsers, userInfo, phoneInfo, phoneDeleteInfo } from './itemFunctions';
 import { clearFields, deleteItemFromUI, clearItems } from './itemFunctions';
 
 // Login in user
@@ -119,14 +119,18 @@ export const api__createPhone = async (naziv, model, godina, kategorija, cenaPol
 }
 
 // find phone
-export const api__findPhone = async (slug, parentEl) => {
+export const api__findPhone = async (slug, parentEl, action) => {
     try {
         const res = await axios({
             method: 'GET',
             url: `/api/v1/telefoni/${slug}`,
         });
         if (res.data.status === 'success') {
-            phoneInfo(res.data.data.telefon[0], parentEl)
+            if (action === 'update') {
+                phoneInfo(res.data.data.telefon[0], parentEl)
+            } else if (action === 'delete') {
+                phoneDeleteInfo(res.data.data.telefon[0], parentEl);
+            }
         }
     } catch (err) {
         showAlert('loginFail', err.response.data.message);
@@ -157,6 +161,23 @@ export const api__updatePhone = async (parentEl, slug, name, model, year, catego
         showAlert('loginFail', err.response.data.message);
     }
 };
+
+// delete phone
+export const api__deletePhone = async (slug, parentEl, fields) => {
+    try {
+        const res = await axios({
+            method: 'DELETE',
+            url: `/api/v1/telefoni/${slug}`
+        });
+        if (res.data.status === 'success') {
+            showAlert('loginSuccess', 'Telefon uspesno obrisan!');
+            clearFields(fields);
+            clearItems(parentEl);
+        }
+    } catch (err) {
+        showAlert('loginFail', err.response.data.message);
+    }
+}
 
 // create new user
 export const api__createUser = async (ime, email, sifra, uloga, fields) => {

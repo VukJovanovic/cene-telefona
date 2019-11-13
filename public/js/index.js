@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import { showAlert } from './alerts';
-import { login, logout, listItems, api__deleteUser, api__createPhone, api__createCategory, api__deleteCategory, api__findPhone, api__createUser, api__findUser, api__updateUser, api__updatePhone } from './api_functions';
+import { login, logout, listItems, api__deleteUser, api__createPhone, api__createCategory, api__deleteCategory, api__findPhone, api__deletePhone, api__createUser, api__findUser, api__updateUser, api__updatePhone } from './api_functions';
 
 // admin login
 const prijaviSe = document.querySelector('.prijaviSe')
@@ -32,6 +32,7 @@ const dodajKategoriju = document.querySelector('.dodajKategoriju');
 const obrisiKategoriju = document.querySelector('.obrisiKategoriju');
 const dodajTelefon = document.querySelector('.dodajTelefon');
 const izmeniTelefon = document.querySelector('.izmeniTelefon');
+const obrisiTelefon = document.querySelector('.obrisiTelefon');
 const dodajRadnika = document.querySelector('.dodajRadnika');
 const spisakRadnika = document.querySelector('.spisakRadnika');
 const izmeniRadnika = document.querySelector('.izmeniRadnika');
@@ -39,6 +40,7 @@ const formDodajKategoriju = document.getElementById('formDodajKategoriju');
 const formObrisiKategoriju = document.getElementById('formObrisiKategoriju');
 const formDodajTelefon = document.getElementById('formDodajTelefon');
 const formIzmeniTelefon = document.getElementById('formIzmeniTelefon');
+const formObrisiTelefon = document.getElementById('formObrisiTelefon');
 const formDodajRadnika = document.getElementById('formDodajRadnika');
 const formSpisakRadnika = document.getElementById('formSpisakRadnika');
 const formIzmeniRadnika = document.getElementById('formIzmeniRadnika');
@@ -57,6 +59,7 @@ if (dodajKategoriju) {
         formIzmeniRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formIzmeniTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         // display the form
         formDodajKategoriju.style.display = 'flex';
@@ -90,6 +93,7 @@ if (obrisiKategoriju) {
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formIzmeniTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         // get all categories from api
         formObrisiKategoriju.style.display = 'flex';
@@ -125,6 +129,7 @@ if (dodajTelefon) {
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formIzmeniTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         // display the form
         formDodajTelefon.style.display = 'flex';
@@ -165,6 +170,7 @@ if (izmeniTelefon) {
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formDodajTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         // display the form
         formIzmeniTelefon.style.display = 'flex';
@@ -179,7 +185,7 @@ if (btn__findPhone) {
         if (!updatePhoneSlug.value) {
             showAlert('loginFail', 'Popunite polje!');
         } else {
-            api__findPhone(updatePhoneSlug.value, formParent);
+            api__findPhone(updatePhoneSlug.value, formParent, 'update');
         }
     });
 }
@@ -206,6 +212,51 @@ if (formIzmeniTelefon) {
     });
 }
 
+// delete phone
+if (obrisiTelefon) {
+    obrisiTelefon.addEventListener('click', function () {
+        // hide other forms
+        formDodajKategoriju.style.display = 'none';
+        formObrisiKategoriju.style.display = 'none';
+        formDodajRadnika.style.display = 'none';
+        formSpisakRadnika.style.display = 'none';
+        formIzmeniRadnika.style.display = 'none';
+        formDodajTelefon.style.display = 'none';
+        formIzmeniTelefon.style.display = 'none';
+
+        // display the form
+        formObrisiTelefon.style.display = 'flex';
+    });
+}
+
+const btn__findPhoneDelete = document.getElementById('btn__findPhoneDelete');
+if (btn__findPhoneDelete) {
+    btn__findPhoneDelete.addEventListener('click', function () {
+        const deletePhoneSlug = document.getElementById('delete_phoneSlug');
+        const formParent = document.querySelector('.phoneDelete__inputContainer');
+
+        if (!deletePhoneSlug.value) {
+            showAlert('loginFail', 'Popunite polje!');
+        } else {
+            api__findPhone(deletePhoneSlug.value, formParent, 'delete');
+        }
+    });
+}
+
+if (formObrisiTelefon) {
+    formObrisiTelefon.addEventListener('click', function (e) {
+        if (e.target.id === 'btn__deletePhone') {
+            const slug = document.getElementById('delete_phoneSlug');
+            const parent = document.querySelector('.phoneDelete__inputContainer')
+            const fields = [slug];
+            if (confirm('Da li ste sigurni da zelite da izbrisete ovaj telefon?')) {
+                api__deletePhone(slug.value, parent, fields);
+            }
+        }
+    });
+}
+
+
 
 // ///////////////////////////// User functions
 
@@ -218,6 +269,7 @@ if (dodajRadnika) {
         formSpisakRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formIzmeniTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         formDodajRadnika.style.display = 'flex'
     });
@@ -268,6 +320,7 @@ if (spisakRadnika) {
         formDodajRadnika.style.display = 'none';
         formIzmeniRadnika.style.display = 'none';
         formIzmeniTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         formSpisakRadnika.style.display = 'flex';
         listItems('/api/v1/radnici', 'GET', formSpisakRadnika, 'Spisak Radnika');
@@ -283,6 +336,7 @@ if (izmeniRadnika) {
         formDodajRadnika.style.display = 'none';
         formSpisakRadnika.style.display = 'none';
         formIzmeniTelefon.style.display = 'none';
+        formObrisiTelefon.style.display = 'none';
 
         formIzmeniRadnika.style.display = 'flex';
     });
