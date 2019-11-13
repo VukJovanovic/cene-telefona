@@ -14,6 +14,15 @@ exports.getOverview = async (req, res, next) => {
     }
 }
 
+String.prototype.capitalize = function(category) {
+    if(category === 'iphone'){
+        return this.charAt(0) + this.charAt(1).toUpperCase() + this.slice(2);
+    } else if( category === 'all'){
+        return  this.charAt(0).toUpperCase() + this.slice(1);
+    }
+    
+}
+
 // Render category page and display data on it
 exports.getPhonesByCategory = async (req, res, next) => {
     try {
@@ -23,8 +32,14 @@ exports.getPhonesByCategory = async (req, res, next) => {
             month: -1
         }
         const phones = await phoneModel.find({ category: filter }).sort(sortFilter);
+        let upperHeading;
+        if(phones[0].category === "iphone"){
+            upperHeading = phones[0].category.capitalize('iphone');
+        } else{
+            upperHeading = phones[0].category.capitalize('all');
+        }
         res.status(200).render('phones', {
-            title: phones[0].category,
+            title: upperHeading,
             phones
         });
         if (!phones) {

@@ -47,6 +47,16 @@
       color: $secondary-color;
       padding: 1rem;
 
+      @media only screen and (max-width: 1435px) {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+      @media only screen and (max-width: 925px) {
+        grid-template-columns: 3fr 1fr 1fr 1fr;
+      }
+      @media only screen and (max-width: 700px) {
+        grid-template-columns: 3.5fr 1fr 1fr 1fr;
+      }
+
       &:nth-child(even) {
         background: rgb(238, 238, 238);
       }
@@ -58,6 +68,24 @@
         margin-top: 3rem;
         font-size: 1.5rem;
         color: $primary-color;
+      }
+
+      .textAlignLeft{
+        text-align: left;
+        padding-left: 8rem;
+
+        @media only screen and (max-width: 1280px) {
+          padding-left: 7rem;
+        }
+        @media only screen and (max-width: 700px) {
+          padding-left: 3rem;
+        }
+        @media only screen and (max-width: 700px) {
+          padding-left: 2rem;
+        }
+        @media only screen and (max-width: 350px) {
+          padding-left: 1rem;
+        }
       }
     }
   }

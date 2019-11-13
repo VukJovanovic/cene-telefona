@@ -215,8 +215,9 @@
     display: grid;
     grid-template-columns: max-content;
     grid-column: 2 / 3;
+    
     @media only screen and (max-width: 1280px) {
-    justify-content: right;
+      justify-content: right;
     }
     
   }

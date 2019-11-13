@@ -1044,6 +1044,21 @@ body {
   color: #002d40;
   padding: 1rem;
 }
+@media only screen and (max-width: 1435px) {
+  .content__container-categories--info .phoneModel {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 925px) {
+  .content__container-categories--info .phoneModel {
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .content__container-categories--info .phoneModel {
+    grid-template-columns: 3.5fr 1fr 1fr 1fr;
+  }
+}
 .content__container-categories--info .phoneModel:nth-child(even) {
   background: #eeeeee;
 }
@@ -1054,6 +1069,30 @@ body {
   margin-top: 3rem;
   font-size: 1.5rem;
   color: #f56a79;
+}
+.content__container-categories--info .phoneModel .textAlignLeft {
+  text-align: left;
+  padding-left: 8rem;
+}
+@media only screen and (max-width: 1280px) {
+  .content__container-categories--info .phoneModel .textAlignLeft {
+    padding-left: 7rem;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .content__container-categories--info .phoneModel .textAlignLeft {
+    padding-left: 3rem;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .content__container-categories--info .phoneModel .textAlignLeft {
+    padding-left: 2rem;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .content__container-categories--info .phoneModel .textAlignLeft {
+    padding-left: 1rem;
+  }
 }
 
 .adminContainer__leftSide {
