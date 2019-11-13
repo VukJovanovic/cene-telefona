@@ -91,7 +91,7 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 70px max-content 60px max-content 90px max-content max-content;
+    grid-template-rows: 70px max-content 60px max-content 80px max-content max-content;
 
     .content__searchForm {
       grid-row: 2 / 3;
@@ -215,5 +215,6 @@
   &__rightSide {
     display: grid;
     grid-template-columns: max-content;
+    grid-column: 2 / 3;
   }
 }
