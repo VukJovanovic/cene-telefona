@@ -911,6 +911,16 @@ body {
   margin-top: 5rem;
 }
 @media only screen and (max-width: 1500px) {
+  .content__container-category {
+    padding-bottom: 5rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .content__container-category {
+    padding-bottom: 0;
+  }
+}
+@media only screen and (max-width: 1500px) {
   .content__container-category-container {
     margin-top: 1rem;
     justify-self: center;
@@ -1378,25 +1388,17 @@ body {
   height: 100vh;
   display: -webkit-box;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 .ErrorPageContainer .errorContent {
-  width: 100%;
-  background-image: url("/error.da55bd8e.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 300px;
-}
-@media only screen and (max-width: 400px) {
-  .ErrorPageContainer .errorContent {
-    background-size: 250px;
-  }
-}
-.ErrorPageContainer .goBackFromError {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  top: 75%;
+  width: 30rem;
+  margin-bottom: 2rem;
 }
 .ErrorPageContainer .goBackFromError a {
   text-decoration: none;
