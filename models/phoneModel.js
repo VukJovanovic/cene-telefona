@@ -11,7 +11,8 @@ const phoneSchema = new mongoose.Schema({
     model: {
         type: String,
         required: [true, 'Svaki telefon mora imati naziv modela.'],
-        unique: true
+        unique: true,
+        lowercase: true
     },
     year: {
         type: Number,

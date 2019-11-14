@@ -32,19 +32,6 @@ html
                 .category__navigation
                     a.categoryGoToPocetna(href='/') Početna >
                     h2= title
-                .content__container-categories
-                    .content__container-categories--info
-                        .phoneModel
-                            div Model
-                            div Godina
-                            div Nov
-                            div Polovan
-                        each phone in phones
-                            .phoneModel
-                                .textAlignLeft= phone.name
-                                div= phone.year
-                                div= phone.priceNov
-                                div= phone.pricePol
             .rightSide       
         // Main menu
         include _mainMenu

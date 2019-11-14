@@ -8776,10 +8776,14 @@ function () {
             res = _context7.sent;
 
             if (res.data.status === 'success') {
-              if (action === 'update') {
-                (0, _itemFunctions.phoneInfo)(res.data.data.telefon[0], parentEl);
-              } else if (action === 'delete') {
-                (0, _itemFunctions.phoneDeleteInfo)(res.data.data.telefon[0], parentEl);
+              if (res.data.data.telefon.length > 0) {
+                if (action === 'update') {
+                  (0, _itemFunctions.phoneInfo)(res.data.data.telefon[0], parentEl);
+                } else if (action === 'delete') {
+                  (0, _itemFunctions.phoneDeleteInfo)(res.data.data.telefon[0], parentEl);
+                }
+              } else {
+                (0, _alerts.showAlert)('loginFail', 'Ne postoji telefon sa ovim slugom!');
               }
             }
 
@@ -9046,8 +9050,6 @@ function () {
 
             if (res.data.status === 'success') {
               (0, _itemFunctions.userInfo)(res.data.data.radnik, infoParent);
-            } else {
-              console.log('prazan');
             }
 
             _context12.next = 10;
@@ -9056,7 +9058,7 @@ function () {
           case 7:
             _context12.prev = 7;
             _context12.t0 = _context12["catch"](0);
-            (0, _alerts.showAlert)('loginFail', _context12.t0.response.data.message);
+            (0, _alerts.showAlert)('loginFail', 'Ne postoji radnik sa ovim ID-em!');
 
           case 10:
           case "end":
