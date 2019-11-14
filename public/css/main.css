@@ -1,10 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap");
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  font-family: "Montserrat", sans-serif;
 }
 
 html {
@@ -24,6 +24,7 @@ html {
 }
 
 body {
+  font-family: "Monrserrat", sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
   position: relative;
