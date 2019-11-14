@@ -19,8 +19,8 @@ html
                             a.adminLabelStyle(href='/admin/panel') Admin Panel
                         .alignRight.adminLogoutStyle
                             a.logoutLabelStyle.logout(href='#') Logout
-                form.content__searchForm(action='#')
-                    input.content__searchForm-searchBar(type='text' placeholder='Unesite željeni telefon...')
+                form.content__searchForm(action='/search' method='GET')
+                    input.content__searchForm-searchBar(type='text' name='search' id='search' placeholder='Unesite željeni telefon...')
                     button.content__searchForm-searchBtn
                         img.searchIcon(src='/images/search-icon.svg' alt='Pretrazi cene telefona u Srbiji')
                 .mainMenu   

@@ -11,6 +11,7 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 
+
 // Routers 
 const categoryRouter = require('./routes/categoryRoutes');
 const phoneRouter = require('./routes/phoneRoutes');

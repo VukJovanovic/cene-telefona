@@ -127,12 +127,16 @@ export const api__findPhone = async (slug, parentEl, action) => {
             url: `/api/v1/telefoni/${slug}`,
         });
         if (res.data.status === 'success') {
-            if (action === 'update') {
-                phoneInfo(res.data.data.telefon[0], parentEl)
-            } else if (action === 'delete') {
-                phoneDeleteInfo(res.data.data.telefon[0], parentEl);
+            if(res.data.data.telefon.length > 0){
+                if (action === 'update') {
+                    phoneInfo(res.data.data.telefon[0], parentEl)
+                } else if (action === 'delete') {   
+                    phoneDeleteInfo(res.data.data.telefon[0], parentEl);
+                }
+            } else {
+                showAlert('loginFail', 'Ne postoji telefon sa ovim slugom!');
             }
-        }
+        } 
     } catch (err) {
         showAlert('loginFail', err.response.data.message);
     }
@@ -227,11 +231,9 @@ export const api__findUser = async (userId, infoParent) => {
         });
         if (res.data.status === 'success') {
             userInfo(res.data.data.radnik, infoParent)
-        } else {
-            console.log('prazan');
         }
     } catch (err) {
-        showAlert('loginFail', err.response.data.message);
+        showAlert('loginFail', 'Ne postoji radnik sa ovim ID-em!');
     }
 }
 
