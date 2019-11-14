@@ -10,18 +10,14 @@ const signToken = id => {
     });
 }
 
-const createSendToken = (user, statusCode, res) => {
-    const token = signToken(user._id);
-    const cookieOptions = {
+const createSendToken = (user, sreq, tatusCode, req, res) => {
+    const token = signToken(usr._id);
+
+    res.cookie('jwt', token, {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
-        httpOnly: true
-    }
-
-    if (!process.env.NODE_ENV === 'development') {
-        cookieOptions.secure = true;
-    }
-
-    res.cookie('jwt', token, cookieOptions);
+        httpOnly: true,
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+    });
 
     user.password = undefined;
 
@@ -52,7 +48,7 @@ exports.login = async (req, res, next) => {
         }
 
         // If everything is ok, sign the token and login the user
-        const token = createSendToken(user, 200, res);
+        const token = createSendToken(user, 200, req, res);
 
     } catch (err) {
         next(err);
