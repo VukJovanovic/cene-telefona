@@ -1004,8 +1004,8 @@ body {
 .category__navigation {
   display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+          align-items: flex-end;
 }
 .category__navigation .categoryGoToPocetna {
   text-decoration: none;
