@@ -8,8 +8,9 @@
     "start:dev": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production & nodemon server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
-    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
-    "watch:sass": "parcel watch ./public/scss/main.scss --out-dir ./public/css --out-file main.css"
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "watch:sass": "parcel watch ./public/scss/main.scss --out-dir ./public/css --out-file main.css",
+    "build:sass": "parcel build ./public/scss/main.scss --out-dir ./public/css --out-file main.css"
   },
   "author": "",
   "license": "ISC",
